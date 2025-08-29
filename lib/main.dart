@@ -1,7 +1,9 @@
 import 'package:cleanarchitecture_v2/core/presentation/components/big_button.dart';
+import 'package:cleanarchitecture_v2/core/presentation/components/input_field.dart';
 import 'package:cleanarchitecture_v2/core/presentation/components/medium_button.dart';
 import 'package:cleanarchitecture_v2/core/presentation/components/small_button.dart';
 import 'package:cleanarchitecture_v2/ui/gaps.dart';
+import 'package:cleanarchitecture_v2/ui/sizes.dart';
 import 'package:cleanarchitecture_v2/ui/text_styles.dart';
 import 'package:flutter/material.dart';
 
@@ -42,6 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       body: ListView(
+        padding: EdgeInsets.all(Sizes.size16),
         children: [
           BigButton(
             text: 'Big',
@@ -62,6 +65,11 @@ class _MyHomePageState extends State<MyHomePage> {
             onPressed: () {
               print('small btn');
             },
+          ),
+          Gaps.v10,
+          InputField(
+            label: 'Label',
+            placeHolder: 'Placeholder',
           ),
         ],
       ),
