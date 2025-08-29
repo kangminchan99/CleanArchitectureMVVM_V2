@@ -1,5 +1,4 @@
 import 'package:cleanarchitecture_v2/ui/color_styles.dart';
-import 'package:cleanarchitecture_v2/ui/gaps.dart';
 import 'package:cleanarchitecture_v2/ui/sizes.dart';
 import 'package:cleanarchitecture_v2/ui/text_styles.dart';
 import 'package:flutter/material.dart';
