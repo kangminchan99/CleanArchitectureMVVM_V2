@@ -6,6 +6,7 @@ import 'package:cleanarchitecture_v2/core/presentation/components/rating_button.
 import 'package:cleanarchitecture_v2/core/presentation/components/small_button.dart';
 import 'package:cleanarchitecture_v2/core/presentation/components/two_tab.dart';
 import 'package:cleanarchitecture_v2/core/presentation/dialogs/rating_dialog.dart';
+import 'package:cleanarchitecture_v2/presentation/sign_in/sign_in_screen.dart';
 import 'package:cleanarchitecture_v2/ui/gaps.dart';
 import 'package:cleanarchitecture_v2/ui/sizes.dart';
 import 'package:cleanarchitecture_v2/ui/text_styles.dart';
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const MyHomePage(),
+      home: SignInScreen(),
     );
   }
 }
