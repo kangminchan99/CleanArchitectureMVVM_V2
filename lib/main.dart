@@ -5,6 +5,7 @@ import 'package:cleanarchitecture_v2/core/presentation/components/medium_button.
 import 'package:cleanarchitecture_v2/core/presentation/components/rating_button.dart';
 import 'package:cleanarchitecture_v2/core/presentation/components/small_button.dart';
 import 'package:cleanarchitecture_v2/core/presentation/components/two_tab.dart';
+import 'package:cleanarchitecture_v2/core/presentation/dialogs/rating_dialog.dart';
 import 'package:cleanarchitecture_v2/ui/gaps.dart';
 import 'package:cleanarchitecture_v2/ui/sizes.dart';
 import 'package:cleanarchitecture_v2/ui/text_styles.dart';
@@ -49,6 +50,25 @@ class _MyHomePageState extends State<MyHomePage> {
       body: ListView(
         padding: EdgeInsets.all(Sizes.size16),
         children: [
+          ElevatedButton(
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return RatingDialog(
+                    title: 'Rate recipe',
+                    score: 3,
+                    actionName: 'Send',
+                    onChanged: (score) {
+                      print(score);
+                    },
+                  );
+                },
+              );
+            },
+            child: Text('RatingDialog'),
+          ),
+          Gaps.v10,
           BigButton(
             text: 'Big',
             onPressed: () {
