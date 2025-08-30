@@ -7,12 +7,14 @@ class SmallButton extends StatefulWidget {
   final String text;
   final void Function() onPressed;
   final Color color;
+  final TextStyle textStyle;
 
   const SmallButton({
     super.key,
     required this.text,
     required this.onPressed,
     this.color = ColorStyles.primary100,
+    this.textStyle = TextStyles.normalTextBold,
   });
 
   @override
@@ -51,9 +53,7 @@ class _SmallButtonState extends State<SmallButton> {
           children: [
             Text(
               widget.text,
-              style: TextStyles.normalTextBold.copyWith(
-                color: ColorStyles.white,
-              ),
+              style: widget.textStyle.copyWith(color: ColorStyles.white),
             ),
           ],
         ),
