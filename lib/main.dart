@@ -4,6 +4,7 @@ import 'package:cleanarchitecture_v2/core/presentation/components/input_field.da
 import 'package:cleanarchitecture_v2/core/presentation/components/medium_button.dart';
 import 'package:cleanarchitecture_v2/core/presentation/components/rating_button.dart';
 import 'package:cleanarchitecture_v2/core/presentation/components/small_button.dart';
+import 'package:cleanarchitecture_v2/core/presentation/components/two_tab.dart';
 import 'package:cleanarchitecture_v2/ui/gaps.dart';
 import 'package:cleanarchitecture_v2/ui/sizes.dart';
 import 'package:cleanarchitecture_v2/ui/text_styles.dart';
@@ -90,6 +91,14 @@ class _MyHomePageState extends State<MyHomePage> {
           RatingButton(
             text: 'text',
             isSelected: true,
+          ),
+          Gaps.v10,
+          TwoTab(
+            onChanged: (index) {
+              print('TwoTab $index');
+            },
+            labels: ['label 1', 'label 2'],
+            selectedIndex: 0,
           ),
         ],
       ),
