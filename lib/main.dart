@@ -1,6 +1,8 @@
 import 'package:cleanarchitecture_v2/core/presentation/components/big_button.dart';
+import 'package:cleanarchitecture_v2/core/presentation/components/filter_button.dart';
 import 'package:cleanarchitecture_v2/core/presentation/components/input_field.dart';
 import 'package:cleanarchitecture_v2/core/presentation/components/medium_button.dart';
+import 'package:cleanarchitecture_v2/core/presentation/components/rating_button.dart';
 import 'package:cleanarchitecture_v2/core/presentation/components/small_button.dart';
 import 'package:cleanarchitecture_v2/ui/gaps.dart';
 import 'package:cleanarchitecture_v2/ui/sizes.dart';
@@ -70,6 +72,24 @@ class _MyHomePageState extends State<MyHomePage> {
           InputField(
             label: 'Label',
             placeHolder: 'Placeholder',
+          ),
+          Gaps.v10,
+          FilterButton(
+            text: 'text',
+          ),
+          Gaps.v10,
+          FilterButton(
+            text: 'text',
+            isSelected: true,
+          ),
+          Gaps.v10,
+          RatingButton(
+            text: 'text',
+          ),
+          Gaps.v10,
+          RatingButton(
+            text: 'text',
+            isSelected: true,
           ),
         ],
       ),
