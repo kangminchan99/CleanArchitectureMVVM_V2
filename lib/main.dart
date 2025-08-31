@@ -6,7 +6,13 @@ import 'package:cleanarchitecture_v2/core/presentation/components/rating_button.
 import 'package:cleanarchitecture_v2/core/presentation/components/small_button.dart';
 import 'package:cleanarchitecture_v2/core/presentation/components/two_tab.dart';
 import 'package:cleanarchitecture_v2/core/presentation/dialogs/rating_dialog.dart';
+import 'package:cleanarchitecture_v2/data/repository/mock_bookmark_repository_impl.dart';
+import 'package:cleanarchitecture_v2/data/repository/mock_recipe_repository_impl.dart';
+import 'package:cleanarchitecture_v2/domain/model/recipe_model.dart';
+import 'package:cleanarchitecture_v2/domain/usecase/get_saved_recipes_usecase.dart';
+import 'package:cleanarchitecture_v2/presentation/saved_recipes/saved_recipes_screen.dart';
 import 'package:cleanarchitecture_v2/presentation/sign_in/sign_in_screen.dart';
+import 'package:cleanarchitecture_v2/ui/color_styles.dart';
 import 'package:cleanarchitecture_v2/ui/gaps.dart';
 import 'package:cleanarchitecture_v2/ui/sizes.dart';
 import 'package:cleanarchitecture_v2/ui/text_styles.dart';
@@ -24,9 +30,27 @@ class MyApp extends StatelessWidget {
       title: 'Clean Architecture MVVM V2',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.light(),
+        scaffoldBackgroundColor: ColorStyles.white,
       ),
-      home: SignInScreen(),
+      home: FutureBuilder<List<RecipeModel>>(
+        future: GetSavedRecipesUsecase(
+          recipeRepository: MockRecipeRepositoryImpl(),
+          bookmarkRepository: MockBookmarkRepositoryImpl(),
+        ).execute(),
+        builder: (context, asyncSnapshot) {
+          if (asyncSnapshot.connectionState == ConnectionState.waiting) {
+            return Center(
+              child: CircularProgressIndicator.adaptive(),
+            );
+          }
+
+          final recipes = asyncSnapshot.data ?? [];
+          return SavedRecipesScreen(
+            recipes: recipes,
+          );
+        },
+      ),
     );
   }
 }
