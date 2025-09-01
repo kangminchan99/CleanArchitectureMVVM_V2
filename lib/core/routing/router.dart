@@ -20,11 +20,16 @@ final router = GoRouter(
     ),
     GoRoute(
       path: SignInScreen.routeURL,
-      builder: (context, state) => SignInScreen(),
+      builder: (context, state) => SignInScreen(
+        onTapSignUp: () => context.go(SignUpScreen.routeURL),
+        onTapSignIn: () => context.go(SavedRecipesScreen.routeURL),
+      ),
     ),
     GoRoute(
       path: SignUpScreen.routeURL,
-      builder: (context, state) => SignUpScreen(),
+      builder: (context, state) => SignUpScreen(
+        onTapSignIn: () => context.go(SignInScreen.routeURL),
+      ),
     ),
     GoRoute(
       path: SavedRecipesScreen.routeURL,

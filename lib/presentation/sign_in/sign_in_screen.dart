@@ -8,7 +8,13 @@ import 'package:flutter/material.dart';
 
 class SignInScreen extends StatelessWidget {
   static const routeURL = '/sign_in';
-  const SignInScreen({super.key});
+  final VoidCallback onTapSignUp;
+  final VoidCallback onTapSignIn;
+  const SignInScreen({
+    super.key,
+    required this.onTapSignUp,
+    required this.onTapSignIn,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +49,7 @@ class SignInScreen extends StatelessWidget {
                 ),
               ),
               Gaps.v24,
-              BigButton(text: 'Sign In', onPressed: () {}),
+              BigButton(text: 'Sign In', onPressed: onTapSignIn),
               Gaps.v20,
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -93,10 +99,13 @@ class SignInScreen extends StatelessWidget {
                     'Don\'t have an account? ',
                     style: TextStyles.smallerTextBold,
                   ),
-                  Text(
-                    'Sign Up',
-                    style: TextStyles.smallerTextBold.copyWith(
-                      color: ColorStyles.secondary100,
+                  GestureDetector(
+                    onTap: onTapSignUp,
+                    child: Text(
+                      'Sign Up',
+                      style: TextStyles.smallerTextBold.copyWith(
+                        color: ColorStyles.secondary100,
+                      ),
                     ),
                   ),
                 ],

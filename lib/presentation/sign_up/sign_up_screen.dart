@@ -8,7 +8,8 @@ import 'package:flutter/material.dart';
 
 class SignUpScreen extends StatefulWidget {
   static const routeURL = '/sign_up';
-  const SignUpScreen({super.key});
+  final VoidCallback onTapSignIn;
+  const SignUpScreen({super.key, required this.onTapSignIn});
 
   @override
   State<SignUpScreen> createState() => _SignUpScreenState();
@@ -129,10 +130,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       'Already a member?',
                       style: TextStyles.smallerTextBold,
                     ),
-                    Text(
-                      'Sign In',
-                      style: TextStyles.smallerTextBold.copyWith(
-                        color: ColorStyles.secondary100,
+                    GestureDetector(
+                      onTap: widget.onTapSignIn,
+                      child: Text(
+                        'Sign In',
+                        style: TextStyles.smallerTextBold.copyWith(
+                          color: ColorStyles.secondary100,
+                        ),
                       ),
                     ),
                   ],
