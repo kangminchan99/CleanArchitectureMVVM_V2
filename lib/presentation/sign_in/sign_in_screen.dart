@@ -72,13 +72,13 @@ class SignInScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
-                    'assets/images/google_button.png',
+                    'assets/images/login/google_button.png',
                     width: Sizes.size60,
                     height: Sizes.size60,
                   ),
                   Gaps.h16,
                   Image.asset(
-                    'assets/images/facebook_button.png',
+                    'assets/images/login/facebook_button.png',
                     width: Sizes.size60,
                     height: Sizes.size60,
                   ),
