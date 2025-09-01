@@ -7,7 +7,6 @@ import 'package:cleanarchitecture_v2/ui/text_styles.dart';
 import 'package:flutter/material.dart';
 
 class SignUpScreen extends StatefulWidget {
-  static const routeURL = '/sign_up';
   final VoidCallback onTapSignIn;
   const SignUpScreen({super.key, required this.onTapSignIn});
 

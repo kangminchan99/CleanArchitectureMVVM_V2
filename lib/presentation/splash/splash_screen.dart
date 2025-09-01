@@ -6,7 +6,6 @@ import 'package:cleanarchitecture_v2/ui/text_styles.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatelessWidget {
-  static const routeURL = '/splash';
   final VoidCallback onTapStartCooking;
   const SplashScreen({
     super.key,

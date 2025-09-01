@@ -1,3 +1,4 @@
+import 'package:cleanarchitecture_v2/core/routing/router_paths.dart';
 import 'package:cleanarchitecture_v2/data/repository/mock_bookmark_repository_impl.dart';
 import 'package:cleanarchitecture_v2/data/repository/mock_recipe_repository_impl.dart';
 import 'package:cleanarchitecture_v2/domain/model/recipe_model.dart';
@@ -10,29 +11,29 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 final router = GoRouter(
-  initialLocation: SplashScreen.routeURL,
+  initialLocation: RouterPaths.splash,
   routes: [
     GoRoute(
-      path: SplashScreen.routeURL,
+      path: RouterPaths.splash,
       builder: (context, state) => SplashScreen(
-        onTapStartCooking: () => context.go(SignInScreen.routeURL),
+        onTapStartCooking: () => context.go(RouterPaths.signIn),
       ),
     ),
     GoRoute(
-      path: SignInScreen.routeURL,
+      path: RouterPaths.signIn,
       builder: (context, state) => SignInScreen(
-        onTapSignUp: () => context.go(SignUpScreen.routeURL),
-        onTapSignIn: () => context.go(SavedRecipesScreen.routeURL),
+        onTapSignUp: () => context.go(RouterPaths.signUp),
+        onTapSignIn: () => context.go(RouterPaths.savedRecipes),
       ),
     ),
     GoRoute(
-      path: SignUpScreen.routeURL,
+      path: RouterPaths.signUp,
       builder: (context, state) => SignUpScreen(
-        onTapSignIn: () => context.go(SignInScreen.routeURL),
+        onTapSignIn: () => context.go(RouterPaths.signIn),
       ),
     ),
     GoRoute(
-      path: SavedRecipesScreen.routeURL,
+      path: RouterPaths.savedRecipes,
       builder: (context, state) => FutureBuilder<List<RecipeModel>>(
         future: GetSavedRecipesUsecase(
           recipeRepository: MockRecipeRepositoryImpl(),
