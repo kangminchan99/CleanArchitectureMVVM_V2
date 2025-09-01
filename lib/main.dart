@@ -11,7 +11,7 @@ import 'package:cleanarchitecture_v2/data/repository/mock_bookmark_repository_im
 import 'package:cleanarchitecture_v2/data/repository/mock_recipe_repository_impl.dart';
 import 'package:cleanarchitecture_v2/domain/model/recipe_model.dart';
 import 'package:cleanarchitecture_v2/domain/usecase/get_saved_recipes_usecase.dart';
-import 'package:cleanarchitecture_v2/presentation/saved_recipes/saved_recipes_screen.dart';
+import 'package:cleanarchitecture_v2/presentation/saved_recipes/screen/saved_recipes_screen.dart';
 import 'package:cleanarchitecture_v2/presentation/sign_in/sign_in_screen.dart';
 import 'package:cleanarchitecture_v2/ui/color_styles.dart';
 import 'package:cleanarchitecture_v2/ui/gaps.dart';

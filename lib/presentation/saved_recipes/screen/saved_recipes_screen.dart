@@ -6,7 +6,10 @@ import 'package:flutter/material.dart';
 
 class SavedRecipesScreen extends StatelessWidget {
   final List<RecipeModel> recipes;
-  const SavedRecipesScreen({super.key, required this.recipes});
+  const SavedRecipesScreen({
+    super.key,
+    required this.recipes,
+  });
 
   @override
   Widget build(BuildContext context) {
