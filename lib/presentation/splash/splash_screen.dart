@@ -6,7 +6,12 @@ import 'package:cleanarchitecture_v2/ui/text_styles.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatelessWidget {
-  const SplashScreen({super.key});
+  static const routeURL = '/splash';
+  final VoidCallback onTapStartCooking;
+  const SplashScreen({
+    super.key,
+    required this.onTapStartCooking,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +60,10 @@ class SplashScreen extends StatelessWidget {
                   padding: EdgeInsets.symmetric(
                     horizontal: Sizes.size64,
                   ),
-                  child: MediumButton(text: 'Start Cooking', onPressed: () {}),
+                  child: MediumButton(
+                    text: 'Start Cooking',
+                    onPressed: onTapStartCooking,
+                  ),
                 ),
                 Gaps.v52,
               ],

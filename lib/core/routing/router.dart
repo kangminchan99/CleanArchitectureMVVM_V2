@@ -9,18 +9,20 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 final router = GoRouter(
-  initialLocation: '/Splash',
+  initialLocation: SplashScreen.routeURL,
   routes: [
     GoRoute(
-      path: '/Splash',
-      builder: (context, state) => SplashScreen(),
+      path: SplashScreen.routeURL,
+      builder: (context, state) => SplashScreen(
+        onTapStartCooking: () => context.go(SignInScreen.routeURL),
+      ),
     ),
     GoRoute(
-      path: '/SignIn',
+      path: SignInScreen.routeURL,
       builder: (context, state) => SignInScreen(),
     ),
     GoRoute(
-      path: '/SavedRecipes',
+      path: SavedRecipesScreen.routeURL,
       builder: (context, state) => FutureBuilder<List<RecipeModel>>(
         future: GetSavedRecipesUsecase(
           recipeRepository: MockRecipeRepositoryImpl(),

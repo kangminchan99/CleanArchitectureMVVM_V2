@@ -7,6 +7,7 @@ import 'package:cleanarchitecture_v2/ui/text_styles.dart';
 import 'package:flutter/material.dart';
 
 class SignInScreen extends StatelessWidget {
+  static const routeURL = '/sign_in';
   const SignInScreen({super.key});
 
   @override

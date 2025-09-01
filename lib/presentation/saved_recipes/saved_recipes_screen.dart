@@ -5,6 +5,7 @@ import 'package:cleanarchitecture_v2/ui/text_styles.dart';
 import 'package:flutter/material.dart';
 
 class SavedRecipesScreen extends StatelessWidget {
+  static const routeURL = '/saved_recipes';
   final List<RecipeModel> recipes;
   const SavedRecipesScreen({super.key, required this.recipes});
 
