@@ -6,6 +6,7 @@ import 'package:cleanarchitecture_v2/core/presentation/components/rating_button.
 import 'package:cleanarchitecture_v2/core/presentation/components/small_button.dart';
 import 'package:cleanarchitecture_v2/core/presentation/components/two_tab.dart';
 import 'package:cleanarchitecture_v2/core/presentation/dialogs/rating_dialog.dart';
+import 'package:cleanarchitecture_v2/core/routing/router.dart';
 import 'package:cleanarchitecture_v2/data/repository/mock_bookmark_repository_impl.dart';
 import 'package:cleanarchitecture_v2/data/repository/mock_recipe_repository_impl.dart';
 import 'package:cleanarchitecture_v2/domain/model/recipe_model.dart';
@@ -26,30 +27,13 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: router,
       title: 'Clean Architecture MVVM V2',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.light(),
         scaffoldBackgroundColor: ColorStyles.white,
-      ),
-      home: FutureBuilder<List<RecipeModel>>(
-        future: GetSavedRecipesUsecase(
-          recipeRepository: MockRecipeRepositoryImpl(),
-          bookmarkRepository: MockBookmarkRepositoryImpl(),
-        ).execute(),
-        builder: (context, asyncSnapshot) {
-          if (asyncSnapshot.connectionState == ConnectionState.waiting) {
-            return Center(
-              child: CircularProgressIndicator.adaptive(),
-            );
-          }
-
-          final recipes = asyncSnapshot.data ?? [];
-          return SavedRecipesScreen(
-            recipes: recipes,
-          );
-        },
       ),
     );
   }
