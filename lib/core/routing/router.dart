@@ -1,4 +1,5 @@
 import 'package:cleanarchitecture_v2/core/routing/router_paths.dart';
+import 'package:cleanarchitecture_v2/main.dart';
 import 'package:cleanarchitecture_v2/presentation/home/home_screen.dart';
 import 'package:cleanarchitecture_v2/presentation/main/main_screen.dart';
 import 'package:cleanarchitecture_v2/presentation/notifications/notifications_screen.dart';
@@ -12,6 +13,7 @@ import 'package:go_router/go_router.dart';
 final router = GoRouter(
   initialLocation: RouterPaths.splash,
   routes: [
+    GoRoute(path: RouterPaths.test, builder: (context, state) => MyHomePage()),
     GoRoute(
       path: RouterPaths.splash,
       builder: (context, state) => SplashScreen(
@@ -49,7 +51,9 @@ final router = GoRouter(
           routes: [
             GoRoute(
               path: RouterPaths.home,
-              builder: (context, state) => HomeScreen(),
+              builder: (context, state) => HomeScreen(
+                name: 'Minchan',
+              ),
             ),
           ],
         ),

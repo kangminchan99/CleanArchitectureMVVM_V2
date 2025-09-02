@@ -1,4 +1,6 @@
 abstract class RouterPaths {
+  static const String test = '/test';
+
   static const String splash = '/splash';
   static const String signIn = '/sign_in';
   static const String signUp = '/sign_up';

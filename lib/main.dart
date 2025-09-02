@@ -3,6 +3,7 @@ import 'package:cleanarchitecture_v2/core/presentation/components/filter_button.
 import 'package:cleanarchitecture_v2/core/presentation/components/input_field.dart';
 import 'package:cleanarchitecture_v2/core/presentation/components/medium_button.dart';
 import 'package:cleanarchitecture_v2/core/presentation/components/rating_button.dart';
+import 'package:cleanarchitecture_v2/core/presentation/components/search_input_field.dart';
 import 'package:cleanarchitecture_v2/core/presentation/components/small_button.dart';
 import 'package:cleanarchitecture_v2/core/presentation/components/two_tab.dart';
 import 'package:cleanarchitecture_v2/core/presentation/dialogs/rating_dialog.dart';
@@ -53,6 +54,8 @@ class _MyHomePageState extends State<MyHomePage> {
       body: ListView(
         padding: EdgeInsets.all(Sizes.size16),
         children: [
+          SearchInputField(placeHolder: 'placeHolder'),
+          Gaps.v10,
           ElevatedButton(
             onPressed: () {
               showDialog(
