@@ -1,22 +1,17 @@
 import 'package:cleanarchitecture_v2/domain/model/recipe_model.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class SavedRecipesState {
-  // 상태
+part 'saved_recipes_state.freezed.dart';
+
+@freezed
+class SavedRecipesState with _$SavedRecipesState {
+  @override
   final List<RecipeModel> recipes;
+  @override
   final bool isLoading;
 
   SavedRecipesState({
     this.recipes = const [],
     this.isLoading = false,
   });
-
-  SavedRecipesState copyWith({
-    List<RecipeModel>? recipes,
-    bool? isLoading,
-  }) {
-    return SavedRecipesState(
-      recipes: recipes ?? this.recipes,
-      isLoading: isLoading ?? this.isLoading,
-    );
-  }
 }

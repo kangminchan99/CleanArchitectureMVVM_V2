@@ -43,3 +43,6 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# freezed는 깃에 안올라가게 해주는게 좋음
+# *.freezed.dart
