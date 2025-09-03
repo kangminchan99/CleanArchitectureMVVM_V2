@@ -9,7 +9,8 @@ import 'package:flutter/material.dart';
 
 class SearchScreen extends StatelessWidget {
   final SearchState state;
-  const SearchScreen({super.key, required this.state});
+  final void Function(String query)? onChanged;
+  const SearchScreen({super.key, required this.state, this.onChanged});
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +35,7 @@ class SearchScreen extends StatelessWidget {
                 Expanded(
                   child: SearchInputField(
                     placeHolder: 'Search Recipe',
+                    onChanged: onChanged,
                   ),
                 ),
                 Gaps.h20,
