@@ -1,10 +1,12 @@
 import 'package:cleanarchitecture_v2/core/routing/router_paths.dart';
 import 'package:cleanarchitecture_v2/main.dart';
-import 'package:cleanarchitecture_v2/presentation/home/home_screen.dart';
+import 'package:cleanarchitecture_v2/presentation/home/root/home_root.dart';
 import 'package:cleanarchitecture_v2/presentation/main/main_screen.dart';
 import 'package:cleanarchitecture_v2/presentation/notifications/notifications_screen.dart';
 import 'package:cleanarchitecture_v2/presentation/profile/profile_screen.dart';
-import 'package:cleanarchitecture_v2/presentation/saved_recipes/screen/saved_recipes_root.dart';
+import 'package:cleanarchitecture_v2/presentation/saved_recipes/root/saved_recipes_root.dart';
+import 'package:cleanarchitecture_v2/presentation/search/root/search_root.dart';
+import 'package:cleanarchitecture_v2/presentation/search/screen/search_screen.dart';
 import 'package:cleanarchitecture_v2/presentation/sign_in/sign_in_screen.dart';
 import 'package:cleanarchitecture_v2/presentation/sign_up/sign_up_screen.dart';
 import 'package:cleanarchitecture_v2/presentation/splash/splash_screen.dart';
@@ -33,6 +35,10 @@ final router = GoRouter(
         onTapSignIn: () => context.go(RouterPaths.signIn),
       ),
     ),
+    GoRoute(
+      path: RouterPaths.search,
+      builder: (context, state) => SearchRoot(),
+    ),
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) {
         return MainScreen(
@@ -51,9 +57,7 @@ final router = GoRouter(
           routes: [
             GoRoute(
               path: RouterPaths.home,
-              builder: (context, state) => HomeScreen(
-                name: 'Minchan',
-              ),
+              builder: (context, state) => HomeRoot(),
             ),
           ],
         ),

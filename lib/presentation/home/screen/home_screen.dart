@@ -7,7 +7,8 @@ import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
   final String name;
-  const HomeScreen({super.key, required this.name});
+  final VoidCallback onSearchTap;
+  const HomeScreen({super.key, required this.name, required this.onSearchTap});
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +52,17 @@ class HomeScreen extends StatelessWidget {
             Row(
               children: [
                 Expanded(
-                  child: SearchInputField(placeHolder: 'Search Recipe'),
+                  child: GestureDetector(
+                    // tap이 일어나는 영역에 대해 확실하게 해주는 역할
+                    behavior: HitTestBehavior.opaque,
+                    onTap: onSearchTap,
+                    child: IgnorePointer(
+                      child: SearchInputField(
+                        placeHolder: 'Search Recipe',
+                        isReadOnly: true,
+                      ),
+                    ),
+                  ),
                 ),
                 Gaps.h20,
                 Container(

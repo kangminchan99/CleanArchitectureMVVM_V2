@@ -6,10 +6,12 @@ import 'package:flutter/material.dart';
 class SearchInputField extends StatelessWidget {
   final String placeHolder;
   final TextEditingController? controller;
+  final bool isReadOnly;
   const SearchInputField({
     super.key,
     required this.placeHolder,
     this.controller,
+    this.isReadOnly = false,
   });
 
   @override
@@ -17,6 +19,7 @@ class SearchInputField extends StatelessWidget {
     return SizedBox(
       height: Sizes.size40,
       child: TextField(
+        readOnly: isReadOnly,
         controller: controller,
         decoration: InputDecoration(
           prefixIcon: Icon(

@@ -1,14 +1,14 @@
 import 'package:cleanarchitecture_v2/core/presentation/components/recipe_card.dart';
-import 'package:cleanarchitecture_v2/domain/model/recipe_model.dart';
+import 'package:cleanarchitecture_v2/presentation/saved_recipes/saved_recipes_state.dart';
 import 'package:cleanarchitecture_v2/ui/sizes.dart';
 import 'package:cleanarchitecture_v2/ui/text_styles.dart';
 import 'package:flutter/material.dart';
 
 class SavedRecipesScreen extends StatelessWidget {
-  final List<RecipeModel> recipes;
+  final SavedRecipesState state;
   const SavedRecipesScreen({
     super.key,
-    required this.recipes,
+    required this.state,
   });
 
   @override
@@ -23,12 +23,16 @@ class SavedRecipesScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: Sizes.size32),
-        child: ListView.builder(
-          itemCount: recipes.length,
-          itemBuilder: (context, index) {
-            return RecipeCard(recipe: recipes[index]);
-          },
-        ),
+        child: state.isLoading
+            ? Center(
+                child: CircularProgressIndicator.adaptive(),
+              )
+            : ListView.builder(
+                itemCount: state.recipes.length,
+                itemBuilder: (context, index) {
+                  return RecipeCard(recipe: state.recipes[index]);
+                },
+              ),
       ),
     );
   }
