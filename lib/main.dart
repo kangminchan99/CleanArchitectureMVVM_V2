@@ -1,3 +1,4 @@
+import 'package:cleanarchitecture_v2/core/di/di_setup.dart';
 import 'package:cleanarchitecture_v2/core/presentation/components/big_button.dart';
 import 'package:cleanarchitecture_v2/core/presentation/components/filter_button.dart';
 import 'package:cleanarchitecture_v2/core/presentation/components/input_field.dart';
@@ -15,6 +16,7 @@ import 'package:cleanarchitecture_v2/ui/text_styles.dart';
 import 'package:flutter/material.dart';
 
 void main() {
+  diSetUp();
   runApp(const MyApp());
 }
 

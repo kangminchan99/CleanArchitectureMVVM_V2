@@ -6,7 +6,6 @@ import 'package:cleanarchitecture_v2/presentation/notifications/notifications_sc
 import 'package:cleanarchitecture_v2/presentation/profile/profile_screen.dart';
 import 'package:cleanarchitecture_v2/presentation/saved_recipes/root/saved_recipes_root.dart';
 import 'package:cleanarchitecture_v2/presentation/search/root/search_root.dart';
-import 'package:cleanarchitecture_v2/presentation/search/screen/search_screen.dart';
 import 'package:cleanarchitecture_v2/presentation/sign_in/sign_in_screen.dart';
 import 'package:cleanarchitecture_v2/presentation/sign_up/sign_up_screen.dart';
 import 'package:cleanarchitecture_v2/presentation/splash/splash_screen.dart';
