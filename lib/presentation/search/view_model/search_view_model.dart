@@ -34,9 +34,14 @@ class SearchViewModel with ChangeNotifier {
   Future<void> searchRecipes(String query) async {
     _state = state.copyWith(isLoading: true);
     notifyListeners();
+
+    final recipes = await _searchRecipesUsecase.excute(query);
+
     _state = state.copyWith(
       isLoading: false,
-      recipes: await _searchRecipesUsecase.excute(query),
+      recipes: recipes,
+      searchTitle: 'Search Result',
+      resultsCount: '${recipes.length} results',
     );
 
     notifyListeners();

@@ -42,7 +42,7 @@ class RecipeModel {
       'chef': chef,
       'time': time,
       'rating': rating,
-      'ingredients': ingredients.map((e) => e.toJson()),
+      'ingredients': ingredients.map((e) => e.toJson()).toList(),
     };
   }
 }

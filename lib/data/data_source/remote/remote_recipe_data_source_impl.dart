@@ -1,4 +1,4 @@
-import 'package:cleanarchitecture_v2/data/data_source/recipe_data_source.dart';
+import 'package:cleanarchitecture_v2/domain/data_source/recipe_data_source.dart';
 
 class RemoteRecipeDataSourceImpl implements RecipeDataSource {
   final _mockData = {

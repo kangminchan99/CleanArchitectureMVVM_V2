@@ -54,9 +54,20 @@ class SearchScreen extends StatelessWidget {
               ],
             ),
             Gaps.v20,
-            Text(
-              'Recent Search',
-              style: TextStyles.normalTextBold,
+            Row(
+              children: [
+                Text(
+                  state.searchTitle,
+                  style: TextStyles.normalTextBold,
+                ),
+                Spacer(),
+                Text(
+                  state.resultsCount,
+                  style: TextStyles.smallerTextRegular.copyWith(
+                    color: ColorStyles.gray3,
+                  ),
+                ),
+              ],
             ),
             Expanded(
               child: state.isLoading
