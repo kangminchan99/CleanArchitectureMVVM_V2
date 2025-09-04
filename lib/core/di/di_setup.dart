@@ -10,6 +10,7 @@ import 'package:cleanarchitecture_v2/domain/repository/recent_search_recipe_repo
 import 'package:cleanarchitecture_v2/domain/repository/recipe_repository.dart';
 import 'package:cleanarchitecture_v2/domain/usecase/get_saved_recipes_usecase.dart';
 import 'package:cleanarchitecture_v2/domain/usecase/search_recipes_usecase.dart';
+import 'package:cleanarchitecture_v2/presentation/home/view_model/home_view_model.dart';
 import 'package:cleanarchitecture_v2/presentation/saved_recipes/view_model/saved_recipes_view_model.dart';
 import 'package:cleanarchitecture_v2/presentation/search/view_model/search_view_model.dart';
 import 'package:get_it/get_it.dart';
@@ -54,4 +55,5 @@ void diSetUp() {
       searchRecipesUsecase: getIt(),
     ),
   );
+  getIt.registerFactory<HomeViewModel>(() => HomeViewModel());
 }
