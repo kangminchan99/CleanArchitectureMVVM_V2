@@ -1,3 +1,4 @@
+import 'package:cleanarchitecture_v2/domain/filter/filter_state.dart';
 import 'package:cleanarchitecture_v2/domain/repository/recent_search_recipe_repository.dart';
 import 'package:cleanarchitecture_v2/domain/usecase/search_recipes_usecase.dart';
 import 'package:cleanarchitecture_v2/presentation/search/search_state.dart';
@@ -44,6 +45,13 @@ class SearchViewModel with ChangeNotifier {
       resultsCount: '${recipes.length} results',
     );
 
+    notifyListeners();
+  }
+
+  Future<void> onChangeFilter(FilterState filterState) async {
+    _state = state.copyWith(
+      filterState: filterState,
+    );
     notifyListeners();
   }
 }

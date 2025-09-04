@@ -10,7 +10,13 @@ import 'package:flutter/material.dart';
 class SearchScreen extends StatelessWidget {
   final SearchState state;
   final void Function(String query)? onChanged;
-  const SearchScreen({super.key, required this.state, this.onChanged});
+  final VoidCallback? onTapFilter;
+  const SearchScreen({
+    super.key,
+    required this.state,
+    this.onChanged,
+    this.onTapFilter,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -39,16 +45,19 @@ class SearchScreen extends StatelessWidget {
                   ),
                 ),
                 Gaps.h20,
-                Container(
-                  width: Sizes.size40,
-                  height: Sizes.size40,
-                  decoration: BoxDecoration(
-                    color: ColorStyles.primary100,
-                    borderRadius: BorderRadius.circular(Sizes.size10),
-                  ),
-                  child: Icon(
-                    Icons.tune,
-                    color: ColorStyles.white,
+                GestureDetector(
+                  onTap: onTapFilter,
+                  child: Container(
+                    width: Sizes.size40,
+                    height: Sizes.size40,
+                    decoration: BoxDecoration(
+                      color: ColorStyles.primary100,
+                      borderRadius: BorderRadius.circular(Sizes.size10),
+                    ),
+                    child: Icon(
+                      Icons.tune,
+                      color: ColorStyles.white,
+                    ),
                   ),
                 ),
               ],
