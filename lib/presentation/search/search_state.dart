@@ -16,6 +16,8 @@ class SearchState with _$SearchState {
   final String resultsCount;
   @override
   final FilterState filterState;
+  @override
+  final String query;
 
   SearchState({
     this.recipes = const [],
@@ -23,6 +25,7 @@ class SearchState with _$SearchState {
     this.searchTitle = 'Recent Search',
     this.resultsCount = '',
     FilterState? filterState,
+    this.query = '',
   }) : filterState =
-           filterState ?? FilterState(time: '', rate: 4, category: '');
+           filterState ?? FilterState(time: 'All', rate: 1, category: 'All');
 }
