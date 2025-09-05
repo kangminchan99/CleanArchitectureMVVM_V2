@@ -98,7 +98,11 @@ class HomeScreen extends StatelessWidget {
           ),
           Gaps.v16,
           Padding(
-            padding: EdgeInsets.only(left: Sizes.size32),
+            padding: EdgeInsets.only(
+              left: Sizes.size32,
+              top: Sizes.size10,
+              bottom: Sizes.size10,
+            ),
             child: RecipeCategorySelector(
               categories: state.categories,
               selectedCategory: state.selectedCategory,
