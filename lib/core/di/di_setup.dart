@@ -9,6 +9,7 @@ import 'package:cleanarchitecture_v2/domain/repository/bookmark_repository.dart'
 import 'package:cleanarchitecture_v2/domain/repository/recent_search_recipe_repository.dart';
 import 'package:cleanarchitecture_v2/domain/repository/recipe_repository.dart';
 import 'package:cleanarchitecture_v2/domain/usecase/get_categories_usecase.dart';
+import 'package:cleanarchitecture_v2/domain/usecase/get_dishes_by_category_usecase.dart';
 import 'package:cleanarchitecture_v2/domain/usecase/get_saved_recipes_usecase.dart';
 import 'package:cleanarchitecture_v2/domain/usecase/search_recipes_usecase.dart';
 import 'package:cleanarchitecture_v2/presentation/home/view_model/home_view_model.dart';
@@ -50,6 +51,11 @@ void diSetUp() {
       recipeRepository: getIt(),
     ),
   );
+  getIt.registerSingleton(
+    GetDishesByCategoryUsecase(
+      recipeRepository: getIt(),
+    ),
+  );
 
   // view model은 화면과 생명주기를 같게 해줘야 하므로 factory 패턴 사용
   getIt.registerFactory<SavedRecipesViewModel>(
@@ -64,6 +70,7 @@ void diSetUp() {
   getIt.registerFactory<HomeViewModel>(
     () => HomeViewModel(
       getCategoriesUsecase: getIt(),
+      getDishesByCategoryUsecase: getIt(),
     ),
   );
 }

@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$HomeState {
 
- String get selectedCategory; List<String> get categories;
+ String get selectedCategory; List<String> get categories; List<RecipeModel> get dishes;
 /// Create a copy of HomeState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $HomeStateCopyWith<HomeState> get copyWith => _$HomeStateCopyWithImpl<HomeState>
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is HomeState&&(identical(other.selectedCategory, selectedCategory) || other.selectedCategory == selectedCategory)&&const DeepCollectionEquality().equals(other.categories, categories));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is HomeState&&(identical(other.selectedCategory, selectedCategory) || other.selectedCategory == selectedCategory)&&const DeepCollectionEquality().equals(other.categories, categories)&&const DeepCollectionEquality().equals(other.dishes, dishes));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,selectedCategory,const DeepCollectionEquality().hash(categories));
+int get hashCode => Object.hash(runtimeType,selectedCategory,const DeepCollectionEquality().hash(categories),const DeepCollectionEquality().hash(dishes));
 
 @override
 String toString() {
-  return 'HomeState(selectedCategory: $selectedCategory, categories: $categories)';
+  return 'HomeState(selectedCategory: $selectedCategory, categories: $categories, dishes: $dishes)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $HomeStateCopyWith<$Res>  {
   factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) _then) = _$HomeStateCopyWithImpl;
 @useResult
 $Res call({
- String selectedCategory, List<String> categories
+ String selectedCategory, List<String> categories, List<RecipeModel> dishes
 });
 
 
@@ -62,11 +62,12 @@ class _$HomeStateCopyWithImpl<$Res>
 
 /// Create a copy of HomeState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? selectedCategory = null,Object? categories = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? selectedCategory = null,Object? categories = null,Object? dishes = null,}) {
   return _then(HomeState(
 selectedCategory: null == selectedCategory ? _self.selectedCategory : selectedCategory // ignore: cast_nullable_to_non_nullable
 as String,categories: null == categories ? _self.categories : categories // ignore: cast_nullable_to_non_nullable
-as List<String>,
+as List<String>,dishes: null == dishes ? _self.dishes : dishes // ignore: cast_nullable_to_non_nullable
+as List<RecipeModel>,
   ));
 }
 

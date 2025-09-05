@@ -1,3 +1,4 @@
+import 'package:cleanarchitecture_v2/core/presentation/components/dish_card.dart';
 import 'package:cleanarchitecture_v2/core/presentation/components/recipe_category_selector.dart';
 import 'package:cleanarchitecture_v2/core/presentation/components/search_input_field.dart';
 import 'package:cleanarchitecture_v2/presentation/home/home_state.dart';
@@ -107,6 +108,21 @@ class HomeScreen extends StatelessWidget {
               categories: state.categories,
               selectedCategory: state.selectedCategory,
               onSelecteCategory: onSelecteCategory,
+            ),
+          ),
+          Gaps.v16,
+          SingleChildScrollView(
+            padding: EdgeInsets.only(left: Sizes.size32),
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: state.dishes
+                  .map(
+                    (e) => Padding(
+                      padding: EdgeInsets.only(right: Sizes.size16),
+                      child: DishCard(recipe: e, isBookmark: false),
+                    ),
+                  )
+                  .toList(),
             ),
           ),
         ],
