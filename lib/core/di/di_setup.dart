@@ -1,5 +1,6 @@
 import 'package:cleanarchitecture_v2/data/data_source/local/default_local_storage.dart';
 import 'package:cleanarchitecture_v2/data/data_source/remote/remote_recipe_data_source_impl.dart';
+import 'package:cleanarchitecture_v2/data/repository/error_mock_recipe_repository_impl.dart';
 import 'package:cleanarchitecture_v2/data/repository/mock_bookmark_repository_impl.dart';
 import 'package:cleanarchitecture_v2/data/repository/mock_recent_search_recipe_repository_impl.dart';
 import 'package:cleanarchitecture_v2/data/repository/mock_recipe_repository_impl.dart';
@@ -26,7 +27,7 @@ void diSetUp() {
 
   // repository
   getIt.registerSingleton<RecipeRepository>(
-    MockRecipeRepositoryImpl(recipeDataSource: getIt()),
+    ErrorMockRecipeRepositoryImpl(recipeDataSource: getIt()),
   );
   getIt.registerSingleton<BookmarkRepository>(MockBookmarkRepositoryImpl());
   getIt.registerSingleton<RecentSearchRecipeRepository>(
