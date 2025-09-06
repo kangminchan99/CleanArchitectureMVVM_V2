@@ -1,14 +1,9 @@
-import 'dart:io';
-
 import 'package:cleanarchitecture_v2/domain/data_source/recipe_data_source.dart';
 import 'package:cleanarchitecture_v2/domain/model/recipe_model.dart';
 import 'package:cleanarchitecture_v2/domain/repository/recipe_repository.dart';
 
 class ErrorMockRecipeRepositoryImpl implements RecipeRepository {
-  final RecipeDataSource _recipeDataSource;
-
-  ErrorMockRecipeRepositoryImpl({required RecipeDataSource recipeDataSource})
-    : _recipeDataSource = recipeDataSource;
+  ErrorMockRecipeRepositoryImpl({required RecipeDataSource recipeDataSource});
 
   // id로 레시피 찾기
   @override

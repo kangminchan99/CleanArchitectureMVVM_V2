@@ -1,6 +1,5 @@
 import 'package:cleanarchitecture_v2/data/data_source/local/default_local_storage.dart';
 import 'package:cleanarchitecture_v2/data/data_source/remote/remote_recipe_data_source_impl.dart';
-import 'package:cleanarchitecture_v2/data/repository/error_mock_recipe_repository_impl.dart';
 import 'package:cleanarchitecture_v2/data/repository/mock_bookmark_repository_impl.dart';
 import 'package:cleanarchitecture_v2/data/repository/mock_recent_search_recipe_repository_impl.dart';
 import 'package:cleanarchitecture_v2/data/repository/mock_recipe_repository_impl.dart';
@@ -11,6 +10,7 @@ import 'package:cleanarchitecture_v2/domain/repository/recent_search_recipe_repo
 import 'package:cleanarchitecture_v2/domain/repository/recipe_repository.dart';
 import 'package:cleanarchitecture_v2/domain/usecase/get_categories_usecase.dart';
 import 'package:cleanarchitecture_v2/domain/usecase/get_dishes_by_category_usecase.dart';
+import 'package:cleanarchitecture_v2/domain/usecase/get_new_recipes_usecase.dart';
 import 'package:cleanarchitecture_v2/domain/usecase/get_saved_recipes_usecase.dart';
 import 'package:cleanarchitecture_v2/domain/usecase/search_recipes_usecase.dart';
 import 'package:cleanarchitecture_v2/presentation/home/view_model/home_view_model.dart';
@@ -27,7 +27,8 @@ void diSetUp() {
 
   // repository
   getIt.registerSingleton<RecipeRepository>(
-    ErrorMockRecipeRepositoryImpl(recipeDataSource: getIt()),
+    // ErrorMockRecipeRepositoryImpl(recipeDataSource: getIt()),
+    MockRecipeRepositoryImpl(recipeDataSource: getIt()),
   );
   getIt.registerSingleton<BookmarkRepository>(MockBookmarkRepositoryImpl());
   getIt.registerSingleton<RecentSearchRecipeRepository>(
@@ -57,6 +58,11 @@ void diSetUp() {
       recipeRepository: getIt(),
     ),
   );
+  getIt.registerSingleton(
+    GetNewRecipesUsecase(
+      recipeRepository: getIt(),
+    ),
+  );
 
   // view model은 화면과 생명주기를 같게 해줘야 하므로 factory 패턴 사용
   getIt.registerFactory<SavedRecipesViewModel>(
@@ -72,6 +78,7 @@ void diSetUp() {
     () => HomeViewModel(
       getCategoriesUsecase: getIt(),
       getDishesByCategoryUsecase: getIt(),
+      getNewRecipesUsecase: getIt(),
     ),
   );
 }
