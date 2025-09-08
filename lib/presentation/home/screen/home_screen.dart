@@ -2,6 +2,7 @@ import 'package:cleanarchitecture_v2/core/presentation/components/dish_card.dart
 import 'package:cleanarchitecture_v2/core/presentation/components/new_recipe_card.dart';
 import 'package:cleanarchitecture_v2/core/presentation/components/recipe_category_selector.dart';
 import 'package:cleanarchitecture_v2/core/presentation/components/search_input_field.dart';
+import 'package:cleanarchitecture_v2/presentation/home/home_action.dart';
 import 'package:cleanarchitecture_v2/presentation/home/home_state.dart';
 import 'package:cleanarchitecture_v2/ui/color_styles.dart';
 import 'package:cleanarchitecture_v2/ui/gaps.dart';
@@ -10,16 +11,12 @@ import 'package:cleanarchitecture_v2/ui/text_styles.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
-  final String name;
-  final VoidCallback onSearchTap;
   final HomeState state;
-  final void Function(String category) onSelecteCategory;
+  final void Function(HomeAction action) onAction;
   const HomeScreen({
     super.key,
-    required this.name,
-    required this.onSearchTap,
+    required this.onAction,
     required this.state,
-    required this.onSelecteCategory,
   });
 
   @override
@@ -40,7 +37,7 @@ class HomeScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Hello $name",
+                            "Hello ${state.name}",
                             style: TextStyles.largeTextBold,
                           ),
                           Gaps.v5,
@@ -73,7 +70,7 @@ class HomeScreen extends StatelessWidget {
                         child: GestureDetector(
                           // tap이 일어나는 영역에 대해 확실하게 해주는 역할
                           behavior: HitTestBehavior.opaque,
-                          onTap: onSearchTap,
+                          onTap: () => onAction(HomeAction.searchTapped()),
                           child: IgnorePointer(
                             child: SearchInputField(
                               placeHolder: 'Search Recipe',
@@ -110,7 +107,8 @@ class HomeScreen extends StatelessWidget {
               child: RecipeCategorySelector(
                 categories: state.categories,
                 selectedCategory: state.selectedCategory,
-                onSelecteCategory: onSelecteCategory,
+                onSelecteCategory: (category) =>
+                    onAction(HomeAction.selectCategory(category)),
               ),
             ),
             Gaps.v16,

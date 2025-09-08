@@ -2,11 +2,13 @@ import 'dart:async';
 
 import 'package:cleanarchitecture_v2/core/domain/error/network_error.dart';
 import 'package:cleanarchitecture_v2/core/domain/error/result.dart';
+
 import 'package:cleanarchitecture_v2/domain/error/new_recipe_error.dart';
 import 'package:cleanarchitecture_v2/domain/model/recipe_model.dart';
 import 'package:cleanarchitecture_v2/domain/usecase/get_categories_usecase.dart';
 import 'package:cleanarchitecture_v2/domain/usecase/get_dishes_by_category_usecase.dart';
 import 'package:cleanarchitecture_v2/domain/usecase/get_new_recipes_usecase.dart';
+import 'package:cleanarchitecture_v2/presentation/home/home_action.dart';
 import 'package:cleanarchitecture_v2/presentation/home/home_state.dart';
 import 'package:flutter/widgets.dart';
 
@@ -31,7 +33,7 @@ class HomeViewModel with ChangeNotifier {
     _fetchNewRecipes();
   }
 
-  HomeState _state = HomeState();
+  HomeState _state = HomeState(name: 'Minchan');
 
   HomeState get state => _state;
 
@@ -65,13 +67,6 @@ class HomeViewModel with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> onSelectCategory(String category) async {
-    _state = state.copyWith(selectedCategory: category);
-    notifyListeners();
-
-    await _fetchDishesByCategory(category);
-  }
-
   Future<void> _fetchNewRecipes() async {
     final result = await _getNewRecipesUsecase.execute();
 
@@ -85,6 +80,21 @@ class HomeViewModel with ChangeNotifier {
           case NewRecipeError.invalidCategory:
           case NewRecipeError.unknown:
         }
+    }
+  }
+
+  void _onSelectCategory(String category) async {
+    _state = state.copyWith(selectedCategory: category);
+    notifyListeners();
+    await _fetchDishesByCategory(category);
+  }
+
+  void onAction(HomeAction homeAction) {
+    switch (homeAction) {
+      case OnSearchTapped():
+        return;
+      case OnSelectCategory():
+        _onSelectCategory(homeAction.category);
     }
   }
 }

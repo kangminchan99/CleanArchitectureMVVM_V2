@@ -13,11 +13,14 @@ class HomeState with _$HomeState {
   final List<RecipeModel> dishes;
   @override
   final List<RecipeModel> newRecipes;
+  @override
+  final String name;
 
   HomeState({
     this.selectedCategory = 'All',
     this.categories = const [],
     this.dishes = const [],
     this.newRecipes = const [],
+    this.name = '',
   });
 }
