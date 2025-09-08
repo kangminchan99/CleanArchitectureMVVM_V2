@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:cleanarchitecture_v2/core/di/di_setup.dart';
-import 'package:cleanarchitecture_v2/core/presentation/components/recipe_category_selector.dart';
 import 'package:cleanarchitecture_v2/core/routing/router_paths.dart';
 import 'package:cleanarchitecture_v2/presentation/home/home_action.dart';
 import 'package:cleanarchitecture_v2/presentation/home/screen/home_screen.dart';

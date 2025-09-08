@@ -13,6 +13,7 @@ import 'package:cleanarchitecture_v2/domain/usecase/get_dishes_by_category_useca
 import 'package:cleanarchitecture_v2/domain/usecase/get_new_recipes_usecase.dart';
 import 'package:cleanarchitecture_v2/domain/usecase/get_saved_recipes_usecase.dart';
 import 'package:cleanarchitecture_v2/domain/usecase/search_recipes_usecase.dart';
+import 'package:cleanarchitecture_v2/domain/usecase/toggle_bookmark_recipe_usecase.dart';
 import 'package:cleanarchitecture_v2/presentation/home/view_model/home_view_model.dart';
 import 'package:cleanarchitecture_v2/presentation/saved_recipes/view_model/saved_recipes_view_model.dart';
 import 'package:cleanarchitecture_v2/presentation/search/view_model/search_view_model.dart';
@@ -56,10 +57,17 @@ void diSetUp() {
   getIt.registerSingleton(
     GetDishesByCategoryUsecase(
       recipeRepository: getIt(),
+      bookmarkRepository: getIt(),
     ),
   );
   getIt.registerSingleton(
     GetNewRecipesUsecase(
+      recipeRepository: getIt(),
+    ),
+  );
+  getIt.registerSingleton(
+    ToggleBookmarkRecipeUsecase(
+      bookmarkRepository: getIt(),
       recipeRepository: getIt(),
     ),
   );
@@ -79,6 +87,7 @@ void diSetUp() {
       getCategoriesUsecase: getIt(),
       getDishesByCategoryUsecase: getIt(),
       getNewRecipesUsecase: getIt(),
+      toggleBookmarkRecipeUsecase: getIt(),
     ),
   );
 }

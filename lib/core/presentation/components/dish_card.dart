@@ -7,8 +7,12 @@ import 'package:flutter/material.dart';
 
 class DishCard extends StatelessWidget {
   final RecipeModel recipe;
-  final bool isBookmark;
-  const DishCard({super.key, required this.recipe, required this.isBookmark});
+  final void Function(RecipeModel recipe) onTapFavorite;
+  const DishCard({
+    super.key,
+    required this.recipe,
+    required this.onTapFavorite,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -64,17 +68,22 @@ class DishCard extends StatelessWidget {
           Positioned(
             right: Sizes.size10,
             bottom: Sizes.size10,
-            child: Container(
-              width: Sizes.size24,
-              height: Sizes.size24,
-              decoration: BoxDecoration(
-                color: ColorStyles.white,
-                shape: BoxShape.circle,
-              ),
-              child: Icon(
-                Icons.bookmark_outline,
-                color: isBookmark ? ColorStyles.primary80 : ColorStyles.gray3,
-                size: Sizes.size16,
+            child: GestureDetector(
+              onTap: () => onTapFavorite(recipe),
+              child: Container(
+                width: Sizes.size24,
+                height: Sizes.size24,
+                decoration: BoxDecoration(
+                  color: ColorStyles.white,
+                  shape: BoxShape.circle,
+                ),
+                child: Icon(
+                  Icons.bookmark_outline,
+                  color: recipe.isFavorite
+                      ? ColorStyles.primary80
+                      : ColorStyles.gray3,
+                  size: Sizes.size16,
+                ),
               ),
             ),
           ),

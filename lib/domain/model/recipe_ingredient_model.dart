@@ -1,22 +1,17 @@
 import 'package:cleanarchitecture_v2/domain/model/ingredient_model.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class RecipeIngredientModel {
-  final IngredientModel ingredient;
-  final int amount;
+part 'recipe_ingredient_model.freezed.dart';
 
-  RecipeIngredientModel({
-    required this.ingredient,
-    required this.amount,
-  });
+part 'recipe_ingredient_model.g.dart';
 
-  RecipeIngredientModel.fromJson(Map<String, dynamic> json)
-    : ingredient = IngredientModel.fromJson(json['ingredient']),
-      amount = json['amount'] as int;
+@freezed
+abstract class RecipeIngredientModel with _$RecipeIngredientModel {
+  const factory RecipeIngredientModel({
+    required IngredientModel ingredient,
+    required int amount,
+  }) = _RecipeIngredientModel;
 
-  Map<String, dynamic> toJson() {
-    return {
-      'ingredient': ingredient.toJson(),
-      'amount': amount,
-    };
-  }
+  factory RecipeIngredientModel.fromJson(Map<String, Object?> json) =>
+      _$RecipeIngredientModelFromJson(json);
 }

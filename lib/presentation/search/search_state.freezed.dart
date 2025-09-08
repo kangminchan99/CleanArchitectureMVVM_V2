@@ -68,7 +68,7 @@ recipes: null == recipes ? _self.recipes : recipes // ignore: cast_nullable_to_n
 as List<RecipeModel>,isLoading: null == isLoading ? _self.isLoading : isLoading // ignore: cast_nullable_to_non_nullable
 as bool,searchTitle: null == searchTitle ? _self.searchTitle : searchTitle // ignore: cast_nullable_to_non_nullable
 as String,resultsCount: null == resultsCount ? _self.resultsCount : resultsCount // ignore: cast_nullable_to_non_nullable
-as String,filterState: freezed == filterState ? _self.filterState : filterState // ignore: cast_nullable_to_non_nullable
+as String,filterState: freezed == filterState ? _self.filterState! : filterState // ignore: cast_nullable_to_non_nullable
 as FilterState?,query: null == query ? _self.query : query // ignore: cast_nullable_to_non_nullable
 as String,
   ));

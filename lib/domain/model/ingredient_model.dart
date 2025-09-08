@@ -1,29 +1,17 @@
-class IngredientModel {
-  final int id;
-  final String name;
-  final String image;
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  IngredientModel({
-    required this.id,
-    required this.name,
-    required this.image,
-  });
+part 'ingredient_model.freezed.dart';
 
-  IngredientModel.fromJson(Map<String, dynamic> json)
-    : id = json['id'] as int,
-      name = json['name'] as String,
-      image = json['image'] as String;
+part 'ingredient_model.g.dart';
 
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'name': name,
-      'image': image,
-    };
-  }
+@freezed
+abstract class IngredientModel with _$IngredientModel {
+  const factory IngredientModel({
+    required int id,
+    required String name,
+    required String image,
+  }) = _IngredientModel;
 
-  @override
-  String toString() {
-    return 'IngredientModel{id: $id, name: $name, image: $image}';
-  }
+  factory IngredientModel.fromJson(Map<String, Object?> json) =>
+      _$IngredientModelFromJson(json);
 }

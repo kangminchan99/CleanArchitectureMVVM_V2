@@ -2,6 +2,7 @@ import 'package:cleanarchitecture_v2/core/presentation/components/dish_card.dart
 import 'package:cleanarchitecture_v2/core/presentation/components/new_recipe_card.dart';
 import 'package:cleanarchitecture_v2/core/presentation/components/recipe_category_selector.dart';
 import 'package:cleanarchitecture_v2/core/presentation/components/search_input_field.dart';
+import 'package:cleanarchitecture_v2/domain/model/recipe_model.dart';
 import 'package:cleanarchitecture_v2/presentation/home/home_action.dart';
 import 'package:cleanarchitecture_v2/presentation/home/home_state.dart';
 import 'package:cleanarchitecture_v2/ui/color_styles.dart';
@@ -120,7 +121,12 @@ class HomeScreen extends StatelessWidget {
                     .map(
                       (e) => Padding(
                         padding: EdgeInsets.only(right: Sizes.size16),
-                        child: DishCard(recipe: e, isBookmark: false),
+                        child: DishCard(
+                          recipe: e,
+                          onTapFavorite: (RecipeModel recipe) {
+                            onAction(HomeAction.favoriteTapped(recipe));
+                          },
+                        ),
                       ),
                     )
                     .toList(),

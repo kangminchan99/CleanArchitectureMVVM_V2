@@ -46,3 +46,4 @@ app.*.map.json
 
 # freezed는 깃에 안올라가게 해주는게 좋음
 # *.freezed.dart
+# *.g.dart
