@@ -12,10 +12,12 @@ class GetSavedRecipesUsecase {
   }) : _recipeRepository = recipeRepository,
        _bookmarkRepository = bookmarkRepository;
 
-  Future<List<RecipeModel>> execute() async {
-    final bookMarkIds = await _bookmarkRepository.getBookmarks();
+  Stream<List<RecipeModel>> execute() async* {
     final recipes = await _recipeRepository.getRecipes();
 
-    return recipes.where((e) => bookMarkIds.contains(e.id)).toList();
+    await for (final bookMarkIds in _bookmarkRepository.bookmarkStream()) {
+      // yield키워드를 써서 북마크 설정이 된 레시피 정보만 내보낼 수 있음
+      yield recipes.where((e) => bookMarkIds.contains(e.id)).toList();
+    }
   }
 }

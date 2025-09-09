@@ -1,9 +1,15 @@
+import 'dart:async';
+
 import 'package:cleanarchitecture_v2/domain/usecase/get_saved_recipes_usecase.dart';
+import 'package:cleanarchitecture_v2/domain/usecase/toggle_bookmark_recipe_usecase.dart';
+import 'package:cleanarchitecture_v2/presentation/saved_recipes/saved_recipes_action.dart';
 import 'package:cleanarchitecture_v2/presentation/saved_recipes/saved_recipes_state.dart';
 import 'package:flutter/material.dart';
 
 class SavedRecipesViewModel with ChangeNotifier {
   final GetSavedRecipesUsecase _getSavedRecipesUsecase;
+  final ToggleBookmarkRecipeUsecase _toggleBookmarkRecipeUsecase;
+  StreamSubscription? _streamSubscription;
 
   // 상태
   SavedRecipesState _state = SavedRecipesState();
@@ -12,19 +18,33 @@ class SavedRecipesViewModel with ChangeNotifier {
 
   SavedRecipesViewModel({
     required GetSavedRecipesUsecase getSavedRecipesUsecase,
-  }) : _getSavedRecipesUsecase = getSavedRecipesUsecase {
-    // SavedRecipesViewModel 생성 시 바로 호출 됨
-    _loadRecipeData();
+    required ToggleBookmarkRecipeUsecase toggleBookmarkRecipeUsecase,
+  }) : _getSavedRecipesUsecase = getSavedRecipesUsecase,
+       _toggleBookmarkRecipeUsecase = toggleBookmarkRecipeUsecase {
+    // 스트림 형태로 구독
+    _streamSubscription = _getSavedRecipesUsecase.execute().listen((recipes) {
+      _state = state.copyWith(
+        recipes: recipes,
+      );
+      notifyListeners();
+    });
   }
 
-  Future<void> _loadRecipeData() async {
-    _state = state.copyWith(isLoading: true);
-    notifyListeners();
+  void _onTapFavorite(int recipeId) async {
+    await _toggleBookmarkRecipeUsecase.execute(recipeId);
+  }
 
-    _state = state.copyWith(
-      recipes: await _getSavedRecipesUsecase.execute(),
-      isLoading: false,
-    );
-    notifyListeners();
+  void onAction(SavedRecipesAction action) async {
+    switch (action) {
+      case OnTapFavorite():
+        _onTapFavorite(action.recipe.id);
+      case OnTapRecipe():
+    }
+  }
+
+  @override
+  void dispose() {
+    _streamSubscription?.cancel();
+    super.dispose();
   }
 }

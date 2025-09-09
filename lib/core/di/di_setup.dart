@@ -74,7 +74,10 @@ void diSetUp() {
 
   // view model은 화면과 생명주기를 같게 해줘야 하므로 factory 패턴 사용
   getIt.registerFactory<SavedRecipesViewModel>(
-    () => SavedRecipesViewModel(getSavedRecipesUsecase: getIt()),
+    () => SavedRecipesViewModel(
+      getSavedRecipesUsecase: getIt(),
+      toggleBookmarkRecipeUsecase: getIt(),
+    ),
   );
   getIt.registerFactory<SearchViewModel>(
     () => SearchViewModel(

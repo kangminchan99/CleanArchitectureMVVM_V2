@@ -12,13 +12,16 @@ class GetDishesByCategoryUsecase {
   }) : _recipeRepository = recipeRepository,
        _bookmarkRepository = bookmarkRepository;
 
-  Future<List<RecipeModel>> execute(String category) async {
+  Stream<List<RecipeModel>> execute(String category) async* {
     final recipes = await _recipeRepository.getRecipes();
-    final ids = await _bookmarkRepository.getBookmarks();
+    final filteredRecipes = recipes.where(
+      (recipe) => category == 'All' || recipe.category == category,
+    );
 
-    return recipes
-        .where((recipe) => category == 'All' || recipe.category == category)
-        .map((e) => e.copyWith(isFavorite: ids.contains(e.id)))
-        .toList();
+    await for (final bookmarkIds in _bookmarkRepository.bookmarkStream()) {
+      yield filteredRecipes
+          .map((e) => e.copyWith(isFavorite: bookmarkIds.contains(e.id)))
+          .toList();
+    }
   }
 }

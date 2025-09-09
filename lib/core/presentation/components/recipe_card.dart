@@ -7,7 +7,12 @@ import 'package:flutter/material.dart';
 
 class RecipeCard extends StatelessWidget {
   final RecipeModel recipe;
-  const RecipeCard({super.key, required this.recipe});
+  final void Function(RecipeModel recipe) onTapFavorite;
+  const RecipeCard({
+    super.key,
+    required this.recipe,
+    required this.onTapFavorite,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -69,13 +74,16 @@ class RecipeCard extends StatelessWidget {
                   ),
                 ),
                 Gaps.h10,
-                ClipOval(
-                  child: Container(
-                    color: ColorStyles.white,
-                    padding: EdgeInsets.all(Sizes.size3),
-                    child: Icon(
-                      Icons.bookmark_border_outlined,
-                      color: ColorStyles.primary80,
+                GestureDetector(
+                  onTap: () => onTapFavorite(recipe),
+                  child: ClipOval(
+                    child: Container(
+                      color: ColorStyles.white,
+                      padding: EdgeInsets.all(Sizes.size3),
+                      child: Icon(
+                        Icons.bookmark_border_outlined,
+                        color: ColorStyles.primary80,
+                      ),
                     ),
                   ),
                 ),

@@ -1,4 +1,6 @@
 import 'package:cleanarchitecture_v2/core/presentation/components/recipe_card.dart';
+import 'package:cleanarchitecture_v2/domain/model/recipe_model.dart';
+import 'package:cleanarchitecture_v2/presentation/saved_recipes/saved_recipes_action.dart';
 import 'package:cleanarchitecture_v2/presentation/saved_recipes/saved_recipes_state.dart';
 import 'package:cleanarchitecture_v2/ui/sizes.dart';
 import 'package:cleanarchitecture_v2/ui/text_styles.dart';
@@ -6,9 +8,11 @@ import 'package:flutter/material.dart';
 
 class SavedRecipesScreen extends StatelessWidget {
   final SavedRecipesState state;
+  final void Function(SavedRecipesAction action) onAction;
   const SavedRecipesScreen({
     super.key,
     required this.state,
+    required this.onAction,
   });
 
   @override
@@ -30,7 +34,14 @@ class SavedRecipesScreen extends StatelessWidget {
             : ListView.builder(
                 itemCount: state.recipes.length,
                 itemBuilder: (context, index) {
-                  return RecipeCard(recipe: state.recipes[index]);
+                  return RecipeCard(
+                    recipe: state.recipes[index],
+                    onTapFavorite: (RecipeModel recipe) {
+                      onAction(
+                        SavedRecipesAction.onTapFavorite(recipe),
+                      );
+                    },
+                  );
                 },
               ),
       ),
