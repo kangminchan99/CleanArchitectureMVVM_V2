@@ -1,4 +1,4 @@
-import 'package:cleanarchitecture_v2/domain/model/recipe_model.dart';
+import 'package:cleanarchitecture_v2/domain/model/recipe/recipe_model.dart';
 
 abstract interface class RecentSearchRecipeRepository {
   Future<List<RecipeModel>> getRecentSearchRecipes();

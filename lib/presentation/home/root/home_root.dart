@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:cleanarchitecture_v2/core/di/di_setup.dart';
 import 'package:cleanarchitecture_v2/core/routing/router_paths.dart';
-import 'package:cleanarchitecture_v2/presentation/home/home_action.dart';
+import 'package:cleanarchitecture_v2/presentation/home/action/home_action.dart';
 import 'package:cleanarchitecture_v2/presentation/home/screen/home_screen.dart';
 import 'package:cleanarchitecture_v2/presentation/home/view_model/home_view_model.dart';
 import 'package:flutter/material.dart';

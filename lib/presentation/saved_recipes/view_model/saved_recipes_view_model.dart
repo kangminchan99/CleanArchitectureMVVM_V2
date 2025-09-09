@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:cleanarchitecture_v2/domain/usecase/get_saved_recipes_usecase.dart';
 import 'package:cleanarchitecture_v2/domain/usecase/toggle_bookmark_recipe_usecase.dart';
-import 'package:cleanarchitecture_v2/presentation/saved_recipes/saved_recipes_action.dart';
-import 'package:cleanarchitecture_v2/presentation/saved_recipes/saved_recipes_state.dart';
+import 'package:cleanarchitecture_v2/presentation/saved_recipes/action/saved_recipes_action.dart';
+import 'package:cleanarchitecture_v2/presentation/saved_recipes/state/saved_recipes_state.dart';
 import 'package:flutter/material.dart';
 
 class SavedRecipesViewModel with ChangeNotifier {

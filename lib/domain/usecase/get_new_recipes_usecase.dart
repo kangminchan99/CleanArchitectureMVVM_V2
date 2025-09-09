@@ -1,6 +1,6 @@
 import 'package:cleanarchitecture_v2/core/domain/error/result.dart';
 import 'package:cleanarchitecture_v2/domain/error/new_recipe_error.dart';
-import 'package:cleanarchitecture_v2/domain/model/recipe_model.dart';
+import 'package:cleanarchitecture_v2/domain/model/recipe/recipe_model.dart';
 import 'package:cleanarchitecture_v2/domain/repository/recipe_repository.dart';
 
 class GetNewRecipesUsecase {

@@ -1,4 +1,4 @@
-import 'package:cleanarchitecture_v2/domain/model/recipe_model.dart';
+import 'package:cleanarchitecture_v2/domain/model/recipe/recipe_model.dart';
 import 'package:cleanarchitecture_v2/ui/color_styles.dart';
 import 'package:cleanarchitecture_v2/ui/sizes.dart';
 import 'package:cleanarchitecture_v2/ui/text_styles.dart';

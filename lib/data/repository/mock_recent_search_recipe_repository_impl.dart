@@ -1,5 +1,5 @@
 import 'package:cleanarchitecture_v2/domain/data_source/local_storage.dart';
-import 'package:cleanarchitecture_v2/domain/model/recipe_model.dart';
+import 'package:cleanarchitecture_v2/domain/model/recipe/recipe_model.dart';
 import 'package:cleanarchitecture_v2/domain/repository/recent_search_recipe_repository.dart';
 
 class MockRecentSearchRecipeRepositoryImpl

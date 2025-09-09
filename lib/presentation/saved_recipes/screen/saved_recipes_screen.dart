@@ -1,7 +1,7 @@
 import 'package:cleanarchitecture_v2/core/presentation/components/recipe_card.dart';
-import 'package:cleanarchitecture_v2/domain/model/recipe_model.dart';
-import 'package:cleanarchitecture_v2/presentation/saved_recipes/saved_recipes_action.dart';
-import 'package:cleanarchitecture_v2/presentation/saved_recipes/saved_recipes_state.dart';
+import 'package:cleanarchitecture_v2/domain/model/recipe/recipe_model.dart';
+import 'package:cleanarchitecture_v2/presentation/saved_recipes/action/saved_recipes_action.dart';
+import 'package:cleanarchitecture_v2/presentation/saved_recipes/state/saved_recipes_state.dart';
 import 'package:cleanarchitecture_v2/ui/sizes.dart';
 import 'package:cleanarchitecture_v2/ui/text_styles.dart';
 import 'package:flutter/material.dart';
@@ -34,13 +34,18 @@ class SavedRecipesScreen extends StatelessWidget {
             : ListView.builder(
                 itemCount: state.recipes.length,
                 itemBuilder: (context, index) {
-                  return RecipeCard(
-                    recipe: state.recipes[index],
-                    onTapFavorite: (RecipeModel recipe) {
-                      onAction(
-                        SavedRecipesAction.onTapFavorite(recipe),
-                      );
-                    },
+                  return GestureDetector(
+                    onTap: () => onAction(
+                      SavedRecipesAction.onTapRecipe(state.recipes[index]),
+                    ),
+                    child: RecipeCard(
+                      recipe: state.recipes[index],
+                      onTapFavorite: (RecipeModel recipe) {
+                        onAction(
+                          SavedRecipesAction.onTapFavorite(recipe),
+                        );
+                      },
+                    ),
                   );
                 },
               ),

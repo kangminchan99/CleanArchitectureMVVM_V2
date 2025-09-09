@@ -5,13 +5,13 @@ import 'package:cleanarchitecture_v2/core/domain/error/result.dart';
 import 'package:cleanarchitecture_v2/domain/error/bookmark_error.dart';
 
 import 'package:cleanarchitecture_v2/domain/error/new_recipe_error.dart';
-import 'package:cleanarchitecture_v2/domain/model/recipe_model.dart';
+import 'package:cleanarchitecture_v2/domain/model/recipe/recipe_model.dart';
 import 'package:cleanarchitecture_v2/domain/usecase/get_categories_usecase.dart';
 import 'package:cleanarchitecture_v2/domain/usecase/get_dishes_by_category_usecase.dart';
 import 'package:cleanarchitecture_v2/domain/usecase/get_new_recipes_usecase.dart';
 import 'package:cleanarchitecture_v2/domain/usecase/toggle_bookmark_recipe_usecase.dart';
-import 'package:cleanarchitecture_v2/presentation/home/home_action.dart';
-import 'package:cleanarchitecture_v2/presentation/home/home_state.dart';
+import 'package:cleanarchitecture_v2/presentation/home/action/home_action.dart';
+import 'package:cleanarchitecture_v2/presentation/home/state/home_state.dart';
 import 'package:flutter/widgets.dart';
 
 class HomeViewModel with ChangeNotifier {

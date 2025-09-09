@@ -1,11 +1,15 @@
 import 'package:cleanarchitecture_v2/data/data_source/local/default_local_storage.dart';
 import 'package:cleanarchitecture_v2/data/data_source/remote/remote_recipe_data_source_impl.dart';
 import 'package:cleanarchitecture_v2/data/repository/mock_bookmark_repository_impl.dart';
+import 'package:cleanarchitecture_v2/data/repository/mock_ingredient_repository_impl.dart';
+import 'package:cleanarchitecture_v2/data/repository/mock_procedure_repository_impl.dart';
 import 'package:cleanarchitecture_v2/data/repository/mock_recent_search_recipe_repository_impl.dart';
 import 'package:cleanarchitecture_v2/data/repository/mock_recipe_repository_impl.dart';
 import 'package:cleanarchitecture_v2/domain/data_source/local_storage.dart';
 import 'package:cleanarchitecture_v2/domain/data_source/recipe_data_source.dart';
 import 'package:cleanarchitecture_v2/domain/repository/bookmark_repository.dart';
+import 'package:cleanarchitecture_v2/domain/repository/ingredient_repository.dart';
+import 'package:cleanarchitecture_v2/domain/repository/procedure_repository.dart';
 import 'package:cleanarchitecture_v2/domain/repository/recent_search_recipe_repository.dart';
 import 'package:cleanarchitecture_v2/domain/repository/recipe_repository.dart';
 import 'package:cleanarchitecture_v2/domain/usecase/get_categories_usecase.dart';
@@ -15,6 +19,7 @@ import 'package:cleanarchitecture_v2/domain/usecase/get_saved_recipes_usecase.da
 import 'package:cleanarchitecture_v2/domain/usecase/search_recipes_usecase.dart';
 import 'package:cleanarchitecture_v2/domain/usecase/toggle_bookmark_recipe_usecase.dart';
 import 'package:cleanarchitecture_v2/presentation/home/view_model/home_view_model.dart';
+import 'package:cleanarchitecture_v2/presentation/ingredient/view_model/ingredient_view_model.dart';
 import 'package:cleanarchitecture_v2/presentation/saved_recipes/view_model/saved_recipes_view_model.dart';
 import 'package:cleanarchitecture_v2/presentation/search/view_model/search_view_model.dart';
 import 'package:get_it/get_it.dart';
@@ -34,6 +39,12 @@ void diSetUp() {
   getIt.registerSingleton<BookmarkRepository>(MockBookmarkRepositoryImpl());
   getIt.registerSingleton<RecentSearchRecipeRepository>(
     MockRecentSearchRecipeRepositoryImpl(localStorage: getIt()),
+  );
+  getIt.registerSingleton<IngredientRepository>(
+    MockIngredientRepositoryImpl(),
+  );
+  getIt.registerSingleton<ProcedureRepository>(
+    MockProcedureRepositoryImpl(),
   );
 
   // usecase
@@ -91,6 +102,13 @@ void diSetUp() {
       getDishesByCategoryUsecase: getIt(),
       getNewRecipesUsecase: getIt(),
       toggleBookmarkRecipeUsecase: getIt(),
+    ),
+  );
+  getIt.registerFactory<IngredientViewModel>(
+    () => IngredientViewModel(
+      ingredientRepository: getIt(),
+      procedureRepository: getIt(),
+      getDishesByCategoryUsecase: getIt(),
     ),
   );
 }

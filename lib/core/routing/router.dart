@@ -1,6 +1,7 @@
 import 'package:cleanarchitecture_v2/core/routing/router_paths.dart';
 import 'package:cleanarchitecture_v2/main.dart';
 import 'package:cleanarchitecture_v2/presentation/home/root/home_root.dart';
+import 'package:cleanarchitecture_v2/presentation/ingredient/root/ingredient_root.dart';
 import 'package:cleanarchitecture_v2/presentation/main/main_screen.dart';
 import 'package:cleanarchitecture_v2/presentation/notifications/notifications_screen.dart';
 import 'package:cleanarchitecture_v2/presentation/profile/profile_screen.dart';
@@ -37,6 +38,13 @@ final router = GoRouter(
     GoRoute(
       path: RouterPaths.search,
       builder: (context, state) => SearchRoot(),
+    ),
+    GoRoute(
+      path: RouterPaths.ingredient,
+      builder: (context, state) {
+        final recipeId = int.parse(state.pathParameters['recipeId']!);
+        return IngredientRoot(recipeId: recipeId);
+      },
     ),
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) {

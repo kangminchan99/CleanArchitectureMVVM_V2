@@ -2,9 +2,9 @@ import 'package:cleanarchitecture_v2/core/presentation/components/dish_card.dart
 import 'package:cleanarchitecture_v2/core/presentation/components/new_recipe_card.dart';
 import 'package:cleanarchitecture_v2/core/presentation/components/recipe_category_selector.dart';
 import 'package:cleanarchitecture_v2/core/presentation/components/search_input_field.dart';
-import 'package:cleanarchitecture_v2/domain/model/recipe_model.dart';
-import 'package:cleanarchitecture_v2/presentation/home/home_action.dart';
-import 'package:cleanarchitecture_v2/presentation/home/home_state.dart';
+import 'package:cleanarchitecture_v2/domain/model/recipe/recipe_model.dart';
+import 'package:cleanarchitecture_v2/presentation/home/action/home_action.dart';
+import 'package:cleanarchitecture_v2/presentation/home/state/home_state.dart';
 import 'package:cleanarchitecture_v2/ui/color_styles.dart';
 import 'package:cleanarchitecture_v2/ui/gaps.dart';
 import 'package:cleanarchitecture_v2/ui/sizes.dart';

@@ -1,5 +1,5 @@
 import 'package:cleanarchitecture_v2/domain/filter/filter_state.dart';
-import 'package:cleanarchitecture_v2/domain/model/recipe_model.dart';
+import 'package:cleanarchitecture_v2/domain/model/recipe/recipe_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'search_state.freezed.dart';

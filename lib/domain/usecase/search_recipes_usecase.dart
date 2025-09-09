@@ -1,6 +1,6 @@
 import 'package:cleanarchitecture_v2/domain/data_source/local_storage.dart';
 import 'package:cleanarchitecture_v2/domain/filter/filter_state.dart';
-import 'package:cleanarchitecture_v2/domain/model/recipe_model.dart';
+import 'package:cleanarchitecture_v2/domain/model/recipe/recipe_model.dart';
 import 'package:cleanarchitecture_v2/domain/repository/recipe_repository.dart';
 
 class SearchRecipesUsecase {

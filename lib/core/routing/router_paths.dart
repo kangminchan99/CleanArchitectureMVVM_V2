@@ -7,6 +7,8 @@ abstract class RouterPaths {
 
   static const String home = '/home';
   static const String search = '/home/search';
+  static const String ingredient = '/home/ingredient/:recipeId';
+  static const String ingredientPath = '/home/ingredient/';
 
   static const String savedRecipes = '/saved_recipes';
   static const String notifications = '/notifications';

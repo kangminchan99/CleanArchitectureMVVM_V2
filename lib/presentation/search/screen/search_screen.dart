@@ -1,6 +1,6 @@
 import 'package:cleanarchitecture_v2/core/presentation/components/recipe_grid_item.dart';
 import 'package:cleanarchitecture_v2/core/presentation/components/search_input_field.dart';
-import 'package:cleanarchitecture_v2/presentation/search/search_state.dart';
+import 'package:cleanarchitecture_v2/presentation/search/state/search_state.dart';
 import 'package:cleanarchitecture_v2/ui/color_styles.dart';
 import 'package:cleanarchitecture_v2/ui/gaps.dart';
 import 'package:cleanarchitecture_v2/ui/sizes.dart';

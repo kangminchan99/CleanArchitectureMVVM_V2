@@ -1,6 +1,6 @@
 import 'package:cleanarchitecture_v2/core/domain/error/result.dart';
 import 'package:cleanarchitecture_v2/domain/error/bookmark_error.dart';
-import 'package:cleanarchitecture_v2/domain/model/recipe_model.dart';
+import 'package:cleanarchitecture_v2/domain/model/recipe/recipe_model.dart';
 import 'package:cleanarchitecture_v2/domain/repository/bookmark_repository.dart';
 import 'package:cleanarchitecture_v2/domain/repository/recipe_repository.dart';
 

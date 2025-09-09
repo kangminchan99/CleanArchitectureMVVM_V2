@@ -1,4 +1,4 @@
-import 'package:cleanarchitecture_v2/domain/model/recipe_ingredient_model.dart';
+import 'package:cleanarchitecture_v2/domain/model/recipe_ingredient/recipe_ingredient_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'recipe_model.freezed.dart';
