@@ -128,12 +128,12 @@ return loadRecipe(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( RecipeModel recipe)?  onTapFavorite,TResult Function( RecipeModel recipe)?  onTapIngredient,TResult Function( int recipeId)?  onTapProcedure,TResult Function( RecipeModel recipe)?  onTapFollow,TResult Function( int recipeId)?  loadRecipe,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( RecipeModel recipe)?  onTapFavorite,TResult Function()?  onTapIngredient,TResult Function()?  onTapProcedure,TResult Function( RecipeModel recipe)?  onTapFollow,TResult Function( int recipeId)?  loadRecipe,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case OnTapFavorite() when onTapFavorite != null:
 return onTapFavorite(_that.recipe);case OnTapIngredient() when onTapIngredient != null:
-return onTapIngredient(_that.recipe);case OnTapProcedure() when onTapProcedure != null:
-return onTapProcedure(_that.recipeId);case OnTapFollow() when onTapFollow != null:
+return onTapIngredient();case OnTapProcedure() when onTapProcedure != null:
+return onTapProcedure();case OnTapFollow() when onTapFollow != null:
 return onTapFollow(_that.recipe);case LoadRecipe() when loadRecipe != null:
 return loadRecipe(_that.recipeId);case _:
   return orElse();
@@ -153,12 +153,12 @@ return loadRecipe(_that.recipeId);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( RecipeModel recipe)  onTapFavorite,required TResult Function( RecipeModel recipe)  onTapIngredient,required TResult Function( int recipeId)  onTapProcedure,required TResult Function( RecipeModel recipe)  onTapFollow,required TResult Function( int recipeId)  loadRecipe,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( RecipeModel recipe)  onTapFavorite,required TResult Function()  onTapIngredient,required TResult Function()  onTapProcedure,required TResult Function( RecipeModel recipe)  onTapFollow,required TResult Function( int recipeId)  loadRecipe,}) {final _that = this;
 switch (_that) {
 case OnTapFavorite():
 return onTapFavorite(_that.recipe);case OnTapIngredient():
-return onTapIngredient(_that.recipe);case OnTapProcedure():
-return onTapProcedure(_that.recipeId);case OnTapFollow():
+return onTapIngredient();case OnTapProcedure():
+return onTapProcedure();case OnTapFollow():
 return onTapFollow(_that.recipe);case LoadRecipe():
 return loadRecipe(_that.recipeId);}
 }
@@ -174,12 +174,12 @@ return loadRecipe(_that.recipeId);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( RecipeModel recipe)?  onTapFavorite,TResult? Function( RecipeModel recipe)?  onTapIngredient,TResult? Function( int recipeId)?  onTapProcedure,TResult? Function( RecipeModel recipe)?  onTapFollow,TResult? Function( int recipeId)?  loadRecipe,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( RecipeModel recipe)?  onTapFavorite,TResult? Function()?  onTapIngredient,TResult? Function()?  onTapProcedure,TResult? Function( RecipeModel recipe)?  onTapFollow,TResult? Function( int recipeId)?  loadRecipe,}) {final _that = this;
 switch (_that) {
 case OnTapFavorite() when onTapFavorite != null:
 return onTapFavorite(_that.recipe);case OnTapIngredient() when onTapIngredient != null:
-return onTapIngredient(_that.recipe);case OnTapProcedure() when onTapProcedure != null:
-return onTapProcedure(_that.recipeId);case OnTapFollow() when onTapFollow != null:
+return onTapIngredient();case OnTapProcedure() when onTapProcedure != null:
+return onTapProcedure();case OnTapFollow() when onTapFollow != null:
 return onTapFollow(_that.recipe);case LoadRecipe() when loadRecipe != null:
 return loadRecipe(_that.recipeId);case _:
   return null;
@@ -268,142 +268,65 @@ $RecipeModelCopyWith<$Res> get recipe {
 
 
 class OnTapIngredient implements IngredientAction {
-  const OnTapIngredient(this.recipe);
+  const OnTapIngredient();
   
 
- final  RecipeModel recipe;
 
-/// Create a copy of IngredientAction
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$OnTapIngredientCopyWith<OnTapIngredient> get copyWith => _$OnTapIngredientCopyWithImpl<OnTapIngredient>(this, _$identity);
+
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is OnTapIngredient&&(identical(other.recipe, recipe) || other.recipe == recipe));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is OnTapIngredient);
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,recipe);
+int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'IngredientAction.onTapIngredient(recipe: $recipe)';
+  return 'IngredientAction.onTapIngredient()';
 }
 
 
 }
 
-/// @nodoc
-abstract mixin class $OnTapIngredientCopyWith<$Res> implements $IngredientActionCopyWith<$Res> {
-  factory $OnTapIngredientCopyWith(OnTapIngredient value, $Res Function(OnTapIngredient) _then) = _$OnTapIngredientCopyWithImpl;
-@useResult
-$Res call({
- RecipeModel recipe
-});
 
 
-$RecipeModelCopyWith<$Res> get recipe;
-
-}
-/// @nodoc
-class _$OnTapIngredientCopyWithImpl<$Res>
-    implements $OnTapIngredientCopyWith<$Res> {
-  _$OnTapIngredientCopyWithImpl(this._self, this._then);
-
-  final OnTapIngredient _self;
-  final $Res Function(OnTapIngredient) _then;
-
-/// Create a copy of IngredientAction
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? recipe = null,}) {
-  return _then(OnTapIngredient(
-null == recipe ? _self.recipe : recipe // ignore: cast_nullable_to_non_nullable
-as RecipeModel,
-  ));
-}
-
-/// Create a copy of IngredientAction
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$RecipeModelCopyWith<$Res> get recipe {
-  
-  return $RecipeModelCopyWith<$Res>(_self.recipe, (value) {
-    return _then(_self.copyWith(recipe: value));
-  });
-}
-}
 
 /// @nodoc
 
 
 class OnTapProcedure implements IngredientAction {
-  const OnTapProcedure(this.recipeId);
+  const OnTapProcedure();
   
 
- final  int recipeId;
 
-/// Create a copy of IngredientAction
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$OnTapProcedureCopyWith<OnTapProcedure> get copyWith => _$OnTapProcedureCopyWithImpl<OnTapProcedure>(this, _$identity);
+
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is OnTapProcedure&&(identical(other.recipeId, recipeId) || other.recipeId == recipeId));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is OnTapProcedure);
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,recipeId);
+int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'IngredientAction.onTapProcedure(recipeId: $recipeId)';
+  return 'IngredientAction.onTapProcedure()';
 }
 
 
 }
 
-/// @nodoc
-abstract mixin class $OnTapProcedureCopyWith<$Res> implements $IngredientActionCopyWith<$Res> {
-  factory $OnTapProcedureCopyWith(OnTapProcedure value, $Res Function(OnTapProcedure) _then) = _$OnTapProcedureCopyWithImpl;
-@useResult
-$Res call({
- int recipeId
-});
 
 
-
-
-}
-/// @nodoc
-class _$OnTapProcedureCopyWithImpl<$Res>
-    implements $OnTapProcedureCopyWith<$Res> {
-  _$OnTapProcedureCopyWithImpl(this._self, this._then);
-
-  final OnTapProcedure _self;
-  final $Res Function(OnTapProcedure) _then;
-
-/// Create a copy of IngredientAction
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? recipeId = null,}) {
-  return _then(OnTapProcedure(
-null == recipeId ? _self.recipeId : recipeId // ignore: cast_nullable_to_non_nullable
-as int,
-  ));
-}
-
-
-}
 
 /// @nodoc
 

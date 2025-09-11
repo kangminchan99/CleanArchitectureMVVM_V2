@@ -21,6 +21,12 @@ _IngredientState _$IngredientStateFromJson(Map<String, dynamic> json) =>
               ?.map((e) => ProcedureModel.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
+      chefs:
+          (json['chefs'] as List<dynamic>?)
+              ?.map((e) => ChefModel.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
+      selectedTapIndex: (json['selectedTapIndex'] as num?)?.toInt() ?? 0,
     );
 
 Map<String, dynamic> _$IngredientStateToJson(_IngredientState instance) =>
@@ -28,4 +34,6 @@ Map<String, dynamic> _$IngredientStateToJson(_IngredientState instance) =>
       'recipe': instance.recipe,
       'ingredients': instance.ingredients,
       'procedures': instance.procedures,
+      'chefs': instance.chefs,
+      'selectedTapIndex': instance.selectedTapIndex,
     };

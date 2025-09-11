@@ -2,6 +2,7 @@ import 'package:cleanarchitecture_v2/core/di/di_setup.dart';
 import 'package:cleanarchitecture_v2/presentation/ingredient/action/ingredient_action.dart';
 import 'package:cleanarchitecture_v2/presentation/ingredient/screen/ingredient_screen.dart';
 import 'package:cleanarchitecture_v2/presentation/ingredient/view_model/ingredient_view_model.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class IngredientRoot extends StatelessWidget {
@@ -18,10 +19,14 @@ class IngredientRoot extends StatelessWidget {
     return ListenableBuilder(
       listenable: viewModel,
       builder: (context, widget) {
-        return IngredientScreen(
-          state: viewModel.state,
-          onAction: viewModel.onAction,
-        );
+        return viewModel.state.recipe == null
+            ? Center(
+                child: CircularProgressIndicator.adaptive(),
+              )
+            : IngredientScreen(
+                state: viewModel.state,
+                onAction: viewModel.onAction,
+              );
       },
     );
   }

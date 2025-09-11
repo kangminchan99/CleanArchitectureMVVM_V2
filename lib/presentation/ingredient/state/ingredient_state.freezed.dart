@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$IngredientState {
 
- RecipeModel? get recipe; List<IngredientModel> get ingredients; List<ProcedureModel> get procedures;
+ RecipeModel? get recipe; List<IngredientModel> get ingredients; List<ProcedureModel> get procedures; List<ChefModel> get chefs; int get selectedTapIndex;
 /// Create a copy of IngredientState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $IngredientStateCopyWith<IngredientState> get copyWith => _$IngredientStateCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is IngredientState&&(identical(other.recipe, recipe) || other.recipe == recipe)&&const DeepCollectionEquality().equals(other.ingredients, ingredients)&&const DeepCollectionEquality().equals(other.procedures, procedures));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is IngredientState&&(identical(other.recipe, recipe) || other.recipe == recipe)&&const DeepCollectionEquality().equals(other.ingredients, ingredients)&&const DeepCollectionEquality().equals(other.procedures, procedures)&&const DeepCollectionEquality().equals(other.chefs, chefs)&&(identical(other.selectedTapIndex, selectedTapIndex) || other.selectedTapIndex == selectedTapIndex));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,recipe,const DeepCollectionEquality().hash(ingredients),const DeepCollectionEquality().hash(procedures));
+int get hashCode => Object.hash(runtimeType,recipe,const DeepCollectionEquality().hash(ingredients),const DeepCollectionEquality().hash(procedures),const DeepCollectionEquality().hash(chefs),selectedTapIndex);
 
 @override
 String toString() {
-  return 'IngredientState(recipe: $recipe, ingredients: $ingredients, procedures: $procedures)';
+  return 'IngredientState(recipe: $recipe, ingredients: $ingredients, procedures: $procedures, chefs: $chefs, selectedTapIndex: $selectedTapIndex)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $IngredientStateCopyWith<$Res>  {
   factory $IngredientStateCopyWith(IngredientState value, $Res Function(IngredientState) _then) = _$IngredientStateCopyWithImpl;
 @useResult
 $Res call({
- RecipeModel? recipe, List<IngredientModel> ingredients, List<ProcedureModel> procedures
+ RecipeModel? recipe, List<IngredientModel> ingredients, List<ProcedureModel> procedures, List<ChefModel> chefs, int selectedTapIndex
 });
 
 
@@ -65,12 +65,14 @@ class _$IngredientStateCopyWithImpl<$Res>
 
 /// Create a copy of IngredientState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? recipe = freezed,Object? ingredients = null,Object? procedures = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? recipe = freezed,Object? ingredients = null,Object? procedures = null,Object? chefs = null,Object? selectedTapIndex = null,}) {
   return _then(_self.copyWith(
 recipe: freezed == recipe ? _self.recipe : recipe // ignore: cast_nullable_to_non_nullable
 as RecipeModel?,ingredients: null == ingredients ? _self.ingredients : ingredients // ignore: cast_nullable_to_non_nullable
 as List<IngredientModel>,procedures: null == procedures ? _self.procedures : procedures // ignore: cast_nullable_to_non_nullable
-as List<ProcedureModel>,
+as List<ProcedureModel>,chefs: null == chefs ? _self.chefs : chefs // ignore: cast_nullable_to_non_nullable
+as List<ChefModel>,selectedTapIndex: null == selectedTapIndex ? _self.selectedTapIndex : selectedTapIndex // ignore: cast_nullable_to_non_nullable
+as int,
   ));
 }
 /// Create a copy of IngredientState
@@ -167,10 +169,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( RecipeModel? recipe,  List<IngredientModel> ingredients,  List<ProcedureModel> procedures)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( RecipeModel? recipe,  List<IngredientModel> ingredients,  List<ProcedureModel> procedures,  List<ChefModel> chefs,  int selectedTapIndex)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _IngredientState() when $default != null:
-return $default(_that.recipe,_that.ingredients,_that.procedures);case _:
+return $default(_that.recipe,_that.ingredients,_that.procedures,_that.chefs,_that.selectedTapIndex);case _:
   return orElse();
 
 }
@@ -188,10 +190,10 @@ return $default(_that.recipe,_that.ingredients,_that.procedures);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( RecipeModel? recipe,  List<IngredientModel> ingredients,  List<ProcedureModel> procedures)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( RecipeModel? recipe,  List<IngredientModel> ingredients,  List<ProcedureModel> procedures,  List<ChefModel> chefs,  int selectedTapIndex)  $default,) {final _that = this;
 switch (_that) {
 case _IngredientState():
-return $default(_that.recipe,_that.ingredients,_that.procedures);case _:
+return $default(_that.recipe,_that.ingredients,_that.procedures,_that.chefs,_that.selectedTapIndex);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -208,10 +210,10 @@ return $default(_that.recipe,_that.ingredients,_that.procedures);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( RecipeModel? recipe,  List<IngredientModel> ingredients,  List<ProcedureModel> procedures)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( RecipeModel? recipe,  List<IngredientModel> ingredients,  List<ProcedureModel> procedures,  List<ChefModel> chefs,  int selectedTapIndex)?  $default,) {final _that = this;
 switch (_that) {
 case _IngredientState() when $default != null:
-return $default(_that.recipe,_that.ingredients,_that.procedures);case _:
+return $default(_that.recipe,_that.ingredients,_that.procedures,_that.chefs,_that.selectedTapIndex);case _:
   return null;
 
 }
@@ -223,7 +225,7 @@ return $default(_that.recipe,_that.ingredients,_that.procedures);case _:
 @JsonSerializable()
 
 class _IngredientState implements IngredientState {
-  const _IngredientState({this.recipe, final  List<IngredientModel> ingredients = const [], final  List<ProcedureModel> procedures = const []}): _ingredients = ingredients,_procedures = procedures;
+  const _IngredientState({this.recipe, final  List<IngredientModel> ingredients = const [], final  List<ProcedureModel> procedures = const [], final  List<ChefModel> chefs = const [], this.selectedTapIndex = 0}): _ingredients = ingredients,_procedures = procedures,_chefs = chefs;
   factory _IngredientState.fromJson(Map<String, dynamic> json) => _$IngredientStateFromJson(json);
 
 @override final  RecipeModel? recipe;
@@ -241,6 +243,14 @@ class _IngredientState implements IngredientState {
   return EqualUnmodifiableListView(_procedures);
 }
 
+ final  List<ChefModel> _chefs;
+@override@JsonKey() List<ChefModel> get chefs {
+  if (_chefs is EqualUnmodifiableListView) return _chefs;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_chefs);
+}
+
+@override@JsonKey() final  int selectedTapIndex;
 
 /// Create a copy of IngredientState
 /// with the given fields replaced by the non-null parameter values.
@@ -255,16 +265,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _IngredientState&&(identical(other.recipe, recipe) || other.recipe == recipe)&&const DeepCollectionEquality().equals(other._ingredients, _ingredients)&&const DeepCollectionEquality().equals(other._procedures, _procedures));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _IngredientState&&(identical(other.recipe, recipe) || other.recipe == recipe)&&const DeepCollectionEquality().equals(other._ingredients, _ingredients)&&const DeepCollectionEquality().equals(other._procedures, _procedures)&&const DeepCollectionEquality().equals(other._chefs, _chefs)&&(identical(other.selectedTapIndex, selectedTapIndex) || other.selectedTapIndex == selectedTapIndex));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,recipe,const DeepCollectionEquality().hash(_ingredients),const DeepCollectionEquality().hash(_procedures));
+int get hashCode => Object.hash(runtimeType,recipe,const DeepCollectionEquality().hash(_ingredients),const DeepCollectionEquality().hash(_procedures),const DeepCollectionEquality().hash(_chefs),selectedTapIndex);
 
 @override
 String toString() {
-  return 'IngredientState(recipe: $recipe, ingredients: $ingredients, procedures: $procedures)';
+  return 'IngredientState(recipe: $recipe, ingredients: $ingredients, procedures: $procedures, chefs: $chefs, selectedTapIndex: $selectedTapIndex)';
 }
 
 
@@ -275,7 +285,7 @@ abstract mixin class _$IngredientStateCopyWith<$Res> implements $IngredientState
   factory _$IngredientStateCopyWith(_IngredientState value, $Res Function(_IngredientState) _then) = __$IngredientStateCopyWithImpl;
 @override @useResult
 $Res call({
- RecipeModel? recipe, List<IngredientModel> ingredients, List<ProcedureModel> procedures
+ RecipeModel? recipe, List<IngredientModel> ingredients, List<ProcedureModel> procedures, List<ChefModel> chefs, int selectedTapIndex
 });
 
 
@@ -292,12 +302,14 @@ class __$IngredientStateCopyWithImpl<$Res>
 
 /// Create a copy of IngredientState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? recipe = freezed,Object? ingredients = null,Object? procedures = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? recipe = freezed,Object? ingredients = null,Object? procedures = null,Object? chefs = null,Object? selectedTapIndex = null,}) {
   return _then(_IngredientState(
 recipe: freezed == recipe ? _self.recipe : recipe // ignore: cast_nullable_to_non_nullable
 as RecipeModel?,ingredients: null == ingredients ? _self._ingredients : ingredients // ignore: cast_nullable_to_non_nullable
 as List<IngredientModel>,procedures: null == procedures ? _self._procedures : procedures // ignore: cast_nullable_to_non_nullable
-as List<ProcedureModel>,
+as List<ProcedureModel>,chefs: null == chefs ? _self._chefs : chefs // ignore: cast_nullable_to_non_nullable
+as List<ChefModel>,selectedTapIndex: null == selectedTapIndex ? _self.selectedTapIndex : selectedTapIndex // ignore: cast_nullable_to_non_nullable
+as int,
   ));
 }
 

@@ -1,6 +1,7 @@
 import 'package:cleanarchitecture_v2/data/data_source/local/default_local_storage.dart';
 import 'package:cleanarchitecture_v2/data/data_source/remote/remote_recipe_data_source_impl.dart';
 import 'package:cleanarchitecture_v2/data/repository/mock_bookmark_repository_impl.dart';
+import 'package:cleanarchitecture_v2/data/repository/mock_chef_repository_impl.dart';
 import 'package:cleanarchitecture_v2/data/repository/mock_ingredient_repository_impl.dart';
 import 'package:cleanarchitecture_v2/data/repository/mock_procedure_repository_impl.dart';
 import 'package:cleanarchitecture_v2/data/repository/mock_recent_search_recipe_repository_impl.dart';
@@ -8,6 +9,7 @@ import 'package:cleanarchitecture_v2/data/repository/mock_recipe_repository_impl
 import 'package:cleanarchitecture_v2/domain/data_source/local_storage.dart';
 import 'package:cleanarchitecture_v2/domain/data_source/recipe_data_source.dart';
 import 'package:cleanarchitecture_v2/domain/repository/bookmark_repository.dart';
+import 'package:cleanarchitecture_v2/domain/repository/chef_repository.dart';
 import 'package:cleanarchitecture_v2/domain/repository/ingredient_repository.dart';
 import 'package:cleanarchitecture_v2/domain/repository/procedure_repository.dart';
 import 'package:cleanarchitecture_v2/domain/repository/recent_search_recipe_repository.dart';
@@ -45,6 +47,9 @@ void diSetUp() {
   );
   getIt.registerSingleton<ProcedureRepository>(
     MockProcedureRepositoryImpl(),
+  );
+  getIt.registerSingleton<ChefRepository>(
+    MockChefRepositoryImpl(),
   );
 
   // usecase
@@ -109,6 +114,7 @@ void diSetUp() {
       ingredientRepository: getIt(),
       procedureRepository: getIt(),
       getDishesByCategoryUsecase: getIt(),
+      chefRepository: getIt(),
     ),
   );
 }
