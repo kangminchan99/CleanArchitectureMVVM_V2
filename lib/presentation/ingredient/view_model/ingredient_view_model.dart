@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cleanarchitecture_v2/domain/repository/chef_repository.dart';
 import 'package:cleanarchitecture_v2/domain/repository/ingredient_repository.dart';
 import 'package:cleanarchitecture_v2/domain/repository/procedure_repository.dart';
@@ -35,7 +37,15 @@ class IngredientViewModel with ChangeNotifier {
         _changeTap(0);
       case OnTapProcedure():
         _changeTap(1);
+      case OnTapShare():
+        log(action.link);
       case OnTapFollow():
+      case OnTapRateRecipe():
+        // TODO: Handle this case.
+        throw UnimplementedError();
+      case OnTapUnsave():
+        // TODO: Handle this case.
+        throw UnimplementedError();
     }
   }
 

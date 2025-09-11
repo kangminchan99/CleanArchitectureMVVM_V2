@@ -11,4 +11,8 @@ sealed class IngredientAction with _$IngredientAction {
   const factory IngredientAction.onTapProcedure() = OnTapProcedure;
   const factory IngredientAction.onTapFollow(RecipeModel recipe) = OnTapFollow;
   const factory IngredientAction.loadRecipe(int recipeId) = LoadRecipe;
+  const factory IngredientAction.onTapShare(String link) = OnTapShare;
+  const factory IngredientAction.onTapRateRecipe(RecipeModel recipe, int rate) =
+      OnTapRateRecipe;
+  const factory IngredientAction.onTapUnsave(RecipeModel recipe) = OnTapUnsave;
 }

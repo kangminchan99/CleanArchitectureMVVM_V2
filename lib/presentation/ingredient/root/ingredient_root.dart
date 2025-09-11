@@ -1,9 +1,9 @@
 import 'package:cleanarchitecture_v2/core/di/di_setup.dart';
+import 'package:cleanarchitecture_v2/core/presentation/components/share_dialog.dart';
 import 'package:cleanarchitecture_v2/presentation/ingredient/action/ingredient_action.dart';
 import 'package:cleanarchitecture_v2/presentation/ingredient/screen/ingredient_screen.dart';
 import 'package:cleanarchitecture_v2/presentation/ingredient/view_model/ingredient_view_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class IngredientRoot extends StatelessWidget {
   final int recipeId;
@@ -26,6 +26,29 @@ class IngredientRoot extends StatelessWidget {
             : IngredientScreen(
                 state: viewModel.state,
                 onAction: viewModel.onAction,
+                onTapMenu: (menu) {
+                  switch (menu) {
+                    case IngredientMenu.share:
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return ShareDialog(
+                            link:
+                                'app.Recipe.co/${(viewModel.state.chefs.first.name).replaceAll(' ', '_').toLowerCase()}',
+                            onTapCopyLink: (link) {
+                              viewModel.onAction(
+                                IngredientAction.onTapShare(link),
+                              );
+                              Navigator.pop(context);
+                            },
+                          );
+                        },
+                      );
+                    case IngredientMenu.rate:
+                    case IngredientMenu.review:
+                    case IngredientMenu.unSave:
+                  }
+                },
               );
       },
     );
