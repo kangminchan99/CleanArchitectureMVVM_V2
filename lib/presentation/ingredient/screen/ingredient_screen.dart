@@ -23,8 +23,6 @@ class IngredientScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(state.selectedTapIndex);
-
     return Scaffold(
       appBar: AppBar(),
       body: SafeArea(
