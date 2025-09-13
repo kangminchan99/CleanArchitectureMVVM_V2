@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 class SmallButton extends StatefulWidget {
   final String text;
-  final void Function() onPressed;
+  final void Function()? onPressed;
   final Color color;
   final TextStyle textStyle;
 
@@ -25,28 +25,39 @@ class _SmallButtonState extends State<SmallButton> {
   bool isPressed = false;
   @override
   Widget build(BuildContext context) {
+    final buttonColor = widget.onPressed == null
+        ? ColorStyles.gray4
+        : isPressed
+        ? ColorStyles.gray4
+        : widget.color;
     return GestureDetector(
-      onTapDown: (_) {
-        setState(() {
-          isPressed = true;
-        });
-      },
-      onTapUp: (_) {
-        setState(() {
-          isPressed = false;
-        });
-        widget.onPressed();
-      },
-      onTapCancel: () {
-        setState(() {
-          isPressed = false;
-        });
-      },
+      onTapDown: widget.onPressed == null
+          ? null
+          : (_) {
+              setState(() {
+                isPressed = true;
+              });
+            },
+      onTapUp: widget.onPressed == null
+          ? null
+          : (_) {
+              setState(() {
+                isPressed = false;
+              });
+              widget.onPressed?.call();
+            },
+      onTapCancel: widget.onPressed == null
+          ? null
+          : () {
+              setState(() {
+                isPressed = false;
+              });
+            },
       child: Container(
         height: Sizes.size36 + Sizes.size1,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(Sizes.size10),
-          color: isPressed ? ColorStyles.gray4 : widget.color,
+          color: buttonColor,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,

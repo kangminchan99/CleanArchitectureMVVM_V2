@@ -6,13 +6,11 @@ import 'package:flutter/material.dart';
 
 class RatingDialog extends StatefulWidget {
   final String title;
-  final int score;
   final String actionName;
   final void Function(int score) onChanged;
   const RatingDialog({
     super.key,
     required this.title,
-    required this.score,
     required this.actionName,
     required this.onChanged,
   });
@@ -43,9 +41,11 @@ class _RatingDialogState extends State<RatingDialog> {
           text: widget.actionName,
           color: ColorStyles.rating,
           textStyle: TextStyles.smallerTextRegular,
-          onPressed: () {
-            widget.onChanged(_value);
-          },
+          onPressed: _value == 0
+              ? null
+              : () {
+                  widget.onChanged(_value);
+                },
         ),
       ],
     );

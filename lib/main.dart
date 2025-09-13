@@ -65,7 +65,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 builder: (context) {
                   return RatingDialog(
                     title: 'Rate recipe',
-                    score: 3,
                     actionName: 'Send',
                     onChanged: (score) {
                       print(score);

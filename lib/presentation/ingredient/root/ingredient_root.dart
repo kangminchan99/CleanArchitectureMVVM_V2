@@ -1,5 +1,6 @@
 import 'package:cleanarchitecture_v2/core/di/di_setup.dart';
-import 'package:cleanarchitecture_v2/core/presentation/components/share_dialog.dart';
+import 'package:cleanarchitecture_v2/core/presentation/dialogs/rating_dialog.dart';
+import 'package:cleanarchitecture_v2/core/presentation/dialogs/share_dialog.dart';
 import 'package:cleanarchitecture_v2/presentation/ingredient/action/ingredient_action.dart';
 import 'package:cleanarchitecture_v2/presentation/ingredient/screen/ingredient_screen.dart';
 import 'package:cleanarchitecture_v2/presentation/ingredient/view_model/ingredient_view_model.dart';
@@ -45,6 +46,24 @@ class IngredientRoot extends StatelessWidget {
                         },
                       );
                     case IngredientMenu.rate:
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return RatingDialog(
+                            title: 'Rate Recipe',
+                            actionName: 'Send',
+                            onChanged: (score) {
+                              viewModel.onAction(
+                                IngredientAction.onTapRateRecipe(
+                                  viewModel.state.recipe!,
+                                  score,
+                                ),
+                              );
+                              Navigator.pop(context);
+                            },
+                          );
+                        },
+                      );
                     case IngredientMenu.review:
                     case IngredientMenu.unSave:
                   }

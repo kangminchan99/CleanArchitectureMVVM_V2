@@ -39,10 +39,9 @@ class IngredientViewModel with ChangeNotifier {
         _changeTap(1);
       case OnTapShare():
         log(action.link);
-      case OnTapFollow():
       case OnTapRateRecipe():
-        // TODO: Handle this case.
-        throw UnimplementedError();
+        log('Rate: ${action.rate} for ${action.recipe.name}');
+      case OnTapFollow():
       case OnTapUnsave():
         // TODO: Handle this case.
         throw UnimplementedError();
