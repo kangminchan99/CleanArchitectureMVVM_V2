@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:cleanarchitecture_v2/domain/clipboard/clipboard_service.dart';
 import 'package:cleanarchitecture_v2/domain/repository/chef_repository.dart';
 import 'package:cleanarchitecture_v2/domain/repository/ingredient_repository.dart';
 import 'package:cleanarchitecture_v2/domain/repository/procedure_repository.dart';
@@ -13,6 +14,7 @@ class IngredientViewModel with ChangeNotifier {
   final ProcedureRepository _procedureRepository;
   final ChefRepository _chefRepository;
   final GetDishesByCategoryUsecase _getDishesByCategoryUsecase;
+  final ClipboardService _clipboardService;
 
   IngredientState _state = IngredientState();
 
@@ -23,10 +25,12 @@ class IngredientViewModel with ChangeNotifier {
     required ProcedureRepository procedureRepository,
     required ChefRepository chefRepository,
     required GetDishesByCategoryUsecase getDishesByCategoryUsecase,
+    required ClipboardService clipboardService,
   }) : _ingredientRepository = ingredientRepository,
        _procedureRepository = procedureRepository,
        _chefRepository = chefRepository,
-       _getDishesByCategoryUsecase = getDishesByCategoryUsecase;
+       _getDishesByCategoryUsecase = getDishesByCategoryUsecase,
+       _clipboardService = clipboardService;
 
   void onAction(IngredientAction action) async {
     switch (action) {
@@ -38,7 +42,7 @@ class IngredientViewModel with ChangeNotifier {
       case OnTapProcedure():
         _changeTap(1);
       case OnTapShare():
-        log(action.link);
+        _clipboardService.copyToClipboard(action.link);
       case OnTapRateRecipe():
         log('Rate: ${action.rate} for ${action.recipe.name}');
       case OnTapFollow():

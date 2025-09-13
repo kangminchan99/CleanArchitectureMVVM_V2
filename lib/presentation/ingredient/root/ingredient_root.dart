@@ -41,6 +41,15 @@ class IngredientRoot extends StatelessWidget {
                                 IngredientAction.onTapShare(link),
                               );
                               Navigator.pop(context);
+
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    'Link Copied',
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                              );
                             },
                           );
                         },
